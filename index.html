@@ -24,8 +24,8 @@
     <!-- our JavaScript -->
     <script type="text/javascript" src="js/profile.js"></script>
     <script type="text/javascript" src="js/feed.js"></script>
+    <script type="text/javascript" src="js/date-functions.js"></script>
     <script type="text/javascript" src="js/modal.js"></script>
-    <script type="text/javascript" src="js/date-functions.js"></script>    
     <script>
         
     </script>
@@ -33,6 +33,15 @@
       body {
         padding-top: 60px;
       }
+      
+      .highlight {
+          border: 1px solid red;
+      }
+
+      .white {
+          background: white !important;
+      }
+      
     </style>
   </head>
 
@@ -157,7 +166,9 @@
           <h3>New Request</h3>
         </div>
         <div class="modal-body">
+          <!-- date picker that will pick week -->
           <div id="datepicker"></div>
+          
         </div>
         <div class="modal-footer">
           <a href="#" class="btn primary">Submit</a>
