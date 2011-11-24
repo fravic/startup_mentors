@@ -1,0 +1,25 @@
+.profilePage H4 {
+    font-size: 24px;
+}
+
+.profilePage UL {
+    margin-bottom: 5px;
+}
+
+.profilePage .profileCenter {
+    text-align: center;
+}
+
+.profilePage .profileHidden {
+    display: none;
+}
+
+.profilePage .profileEditButtons {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.profilePage .profileEditButtonsSmall {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

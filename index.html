@@ -6,9 +6,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+    <link rel="stylesheet" href="css/profile.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
     <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-modal.js"></script>
+    <script type="text/javascript" src="js/profile.js"></script>
     <script>
         
     </script>
@@ -37,34 +40,64 @@
     <div class="container">
     <div class="row">
       <div class="span5">
-        <div class="well">
-          <h4>Startup A Info</h4>
-          <ul>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
-          <h5>Sidebar</h5>
-          <ul>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
-          <h5>Sidebar</h5>
-          <ul>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
+        <div class="sidebar profilePage">
+          <div class="well">
+            <div class="profileCenter">
+              <img src="img/startupy.png" />
+              <h4>Startup Y</h4>
+              <a href="javascript:Profile.editProfile();">[Edit]</a>
+            </div>
+
+            <h5>Founders</h5>
+            <ul id="profileFieldFounders">
+              <li><a href="#">John Smith</a></li>
+              <li><a href="#">Simon Oliver</a></li>
+            </ul>
+            <div class="profileHidden">
+              <input id="profileHiddenFounder" type="text" placeholder="Type a name to add a Founder" />
+              <div class="profileEditButtonsSmall">
+                <a href="javascript:Profile.addFounder();" data-backdrop="static" class="btn small">Add</a>
+              </div>
+            </div>
+            <h5>Contact</h5>
+            <div id="profileFieldContact" class="profileField">
+              contactus@startupy.com
+            </div>
+            <div class="profileHidden">
+              <input id="profileHiddenContact" type="text" value="contactus@startupy.com" />
+            </div>
+            <h5>Employees</h5>
+            <div id="profileFieldEmployees" class="profileField">
+              2
+            </div>
+            <div class="profileHidden">
+              <input id="profileHiddenEmployees" type="text" value="2" />
+            </div>
+            <h5>Revenue</h5>
+            <div id="profileFieldRevenue" class="profileField">
+              $100,000/year
+            </div>
+            <div class="profileHidden">
+              <input id="profileHiddenRevenue" type="text" value="$100,000/year" />
+            </div>
+            <h5>Funding</h5>
+            <div id="profileFieldFunding" class="profileField">
+              $1,500,000
+            </div>
+            <div class="profileHidden">
+              <input id="profileHiddenFunding" type="text" value="$1,500,000" />
+            </div>
+            <div class="profileHidden profileEditButtons">
+              <a href="javascript:Profile.finishEditing(false);" data-backdrop="static" class="btn medium">Cancel</a>
+              <a href="javascript:Profile.finishEditing(true);" data-backdrop="static" class="btn medium">Save</a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="span11">
           <div class="well">
-            <a href="#" data-controls-modal="newEntryModal" data-backdrop="static" class="btn large">New Entry</a>
-            <a href="#" data-controls-modal="newRequestModal" data-backdrop="static" class="btn large">New Request</a>
+            <a href="#" data-backdrop="static" class="btn large">New Entry</a>
+            <a href="#" data-backdrop="static" class="btn large">New Request</a>
           </div> <!-- .well -->
       </div><!-- span 11-->
     </div><!-- row -->
