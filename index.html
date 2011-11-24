@@ -63,11 +63,50 @@
       </div>
       <div class="span11">
           <div class="well">
-            <a href="#" data-controls-modal="my-modal" data-backdrop="static" class="btn large">New Entry</a>
-            <a href="#" class="btn large">New Request</a>
+            <a href="#" data-controls-modal="newEntryModal" data-backdrop="static" class="btn large">New Entry</a>
+            <a href="#" data-controls-modal="newRequestModal" data-backdrop="static" class="btn large">New Request</a>
           </div> <!-- .well -->
       </div><!-- span 11-->
     </div><!-- row -->
     </div><!-- container -->
+    
+    <!-- Modals -->
+    <div id="newEntryModal" class="modal hide fade in" style="display: none; ">
+        <div class="modal-header">
+          <a href="#" class="close">×</a>
+          <h3>Modal Heading</h3>
+        </div>
+        <div class="modal-body">
+          <p>One fine body…</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn primary">Primary</a>
+          <a href="#" class="btn secondary">Secondary</a>
+        </div>
+    </div>
+    
+    <div id="newRequestModal" class="modal hide fade in" style="display: none; ">
+        <div class="modal-header">
+          <a href="#" class="close">×</a>
+          <h3>Modal Heading</h3>
+        </div>
+        <div class="modal-body">
+          <p>One fine body…</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn primary">Primary</a>
+          <a href="#" class="btn secondary">Secondary</a>
+        </div>
+    </div>
+    <script>
+        $('#newEntryModal').modal({
+          backdrop: true,
+          keyboard: true
+        });
+        $('#newRequestModal').modal({
+          backdrop: true,
+          keyboard: true
+        });
+    </script>
   </body>
 </html>
