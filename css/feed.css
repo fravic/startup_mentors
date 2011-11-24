@@ -1,0 +1,24 @@
+
+#feed-list {
+	list-style-type: none;
+	margin: 0px;
+}
+
+.feed-item-name {
+  display: inline-block;
+  width: 75%;
+}
+
+.feed-item-date {
+  display: inline-block;
+  width: 25%;
+  text-align: right;
+}
+
+.feed-item-contents {
+  display: inline-block;
+  padding : 10px;
+  margin-top : 5px;
+  width : 98%;
+  background-color : white;
+}
