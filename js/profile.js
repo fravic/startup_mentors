@@ -18,7 +18,7 @@ function _Profile() {
         $(".profileField").show();
 
         if (save) {            
-            if (this.founders != _tempFounders) {
+            if (this.founders.toString() != _tempFounders.toString()) {
               var entry = {
                   Type: "Milestone",
                   Category: "Founders",
@@ -29,7 +29,7 @@ function _Profile() {
                   To : _tempFounders.length
               };
               feed.addEntryToStart(entry);
-              this.founders = _tempFounders;
+              this.founders = _tempFounders.slice(0);
             }
             if (self.contact != $("#profileHiddenContact").val()) {
               var entry = {
@@ -84,7 +84,7 @@ function _Profile() {
               self.funding = $("#profileHiddenFunding").val();
             }
         } else {
-            _tempFounders = this.founders;
+            _tempFounders = this.founders.slice(0);
         }
 
         updateFields();
