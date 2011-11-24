@@ -114,7 +114,7 @@ function _Profile() {
     function updateFields() {
         updateFounders();
 
-        $("#profileFieldContact").html(self.contact);
+        $("#profileFieldContact").html("<a href=\"mailto:" + self.contact + "\">" + self.contact + "</a>");
         $("#profileFieldEmployees").html(self.employees);
         $("#profileFieldRevenue").html(self.revenue);
         $("#profileFieldFunding").html(self.funding);
