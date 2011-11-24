@@ -14,6 +14,17 @@
       border-collapse : collapse;
       float:left;
     }
+    
+    .selections {
+      border-collapse: collapse;
+      float: left;
+    }
+    .selections td {
+      width: 150px;
+    }
+    .selections tr {
+      height: 21px;
+    }
     .times {
       border-collapse : collapse;
       float: left;
@@ -242,12 +253,37 @@
       </tr>
     </table>
     <table class="selections">
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
     </table>
     <script>
     $(function() {
+      $(".selections td").addClass("unused");
      $(".timepicker td").not(".info").click(function () {
        $(this).toggleClass("blackify");
+       $(".unused").first().removeClass("unused").text("10:30 AM, Dec 21st");
      });
+     
+     
+     
     });
     </script>
   </body>
