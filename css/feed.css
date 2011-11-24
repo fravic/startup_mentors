@@ -16,11 +16,14 @@
 }
 
 .feed-item-contents {
-  display: inline-block;
+  display: block;
   padding : 10px;
   margin-top : 5px;
-  width : 98%;
   background-color : white;
+}
+
+.feed-comment {
+  background-color : #dddddd;
 }
 
 #commentBtnTpl {
@@ -43,8 +46,4 @@
 
 .comment {
     padding: 10px;
-}
-
-.comment DIV {
-    font-weight: bold;
 }

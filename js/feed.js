@@ -3,7 +3,22 @@
 // feed.js
 //
 
+function generate_Guid() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
 var feed = {
+  categories : [
+    "Contact",
+    "Employees",
+    "Founders",
+    "Funding",
+    "Revenue",
+    "Other"
+  ],
   entries : [
     {
       Type: "Milestone",
@@ -22,8 +37,10 @@ var feed = {
       
       Person: "John Smith",
       When : new Date(2011, 11, 20, 10, 24, 00, 00),
-      Notes : "Talked about awesome stuff.",
-      Comments : []        
+      Notes : "Talked about meeting with SV VCs.",
+      Comments : [
+        "Oh yeah, also discussed possible government funding."
+      ]        
     },
     {
       Type: "Entry",
@@ -31,19 +48,34 @@ var feed = {
       DateTime: new Date(2011, 11, 19, 15, 44, 00, 00),
       
       Person: "John Smith",
-      Notes : "Fund all the things!",
+      Notes : "We need to start looking for more funding.",
       Comments : []
     }
   ],
   
+  entryForGuid : function(Guid) {
+    for (i = 0; i < feed.entries.length; i++) {
+      if (this.entries[i].Guid == Guid) {
+        return this.entries[i];
+      }
+    }
+    return null;
+  },
+  
   end : 0,
   
   addEntryToStart : function(entry) {
+    entry.Guid = generate_Guid();
+    entry.Comments = [];
+    
     this.entries.unshift(entry);
     $("#feed-list").prepend(this.generateEntry(0));
   },
   
   addEntryToEnd : function(entry) {
+    entry.Guid = generate_Guid();
+    entry.Comments = [];
+    
     this.entries.push(entry);
     $("#feed-list").append(this.generateEntry(feed.entries.length - 1));
   },
@@ -99,32 +131,49 @@ var feed = {
     }
 
       var comments = $("#commentsTpl").clone();
-      comments.attr("id", "comments" + i);
+      comments.attr("id", "comments" + this.entries[i].Guid);
       $(li).append(comments);
 
       var commentBtn = $("#commentBtnTpl").clone();
-      commentBtn.attr("id", "commentBtn" + i);
-      $("A", commentBtn).attr("href", "javascript:feed.addComment(" + i + ");");
+      commentBtn.attr("id", "commentBtn" + this.entries[i].Guid);
+      $("A", commentBtn).attr("href", "javascript:feed.addComment(\'" + this.entries[i].Guid + "\');");
       $(li).append(commentBtn);
+      
+    for (j = 0; j < this.entries[i].Comments.length; j++) {
+      var commentTxt, newComment, speakerDiv;
+      
+      commentTxt = this.entries[i].Comments[j];
+      
+      newComment = $("<div class=\"feed-comment\">");
+      speakerDiv = $("<div>");
+      speakerDiv.html("<b>John Smith</b> commented:");
+      newComment.addClass("comment");
+      newComment.append(speakerDiv);
+      newComment.append(commentTxt);
+      
+      comments.append(newComment);
+    }
     
     return li;
   },
 
-    addComment : function(idx) {
+    addComment : function(Guid) {
         var btn, commentTxt, comments, newComment, speakerDiv;
 
-        btn = $("#commentBtn" + idx);
+        btn = $("#commentBtn" + Guid);
         commentTxt = $("input", btn).val();
-        this.entries[idx].Comments.push(commentTxt);
+        
+        var entry = this.entryForGuid(Guid);
+        entry.Comments.push(commentTxt);
 
-        newComment = $("<div>");
+        newComment = $("<div class=\"feed-comment\">");
         speakerDiv = $("<div>");
-        speakerDiv.html("Startup Y");
+        speakerDiv.html("<b>John Smith</b> commented:");
         newComment.addClass("comment");
         newComment.append(speakerDiv);
         newComment.append(commentTxt);
 
-        comments = $("#comments" + idx);
+        comments = $("#comments" + Guid);
         comments.append(newComment);
 
         $("input", btn).val("");
@@ -133,9 +182,12 @@ var feed = {
 
 $(document).ready(function() {
   $('#feed').append("<ul id='feed-list'></ul>");
-  for (i = 0; (i < feed.entries.length) && (i < 5); i++) {
-    $("#feed-list").append(feed.generateEntry(i));
-    this.end++;
+  for (i = 0; i < feed.entries.length; i++) {
+    feed.entries[i].Guid = generate_Guid();
+    if (i < 5) {
+      $("#feed-list").append(feed.generateEntry(i));
+      this.end++;
+    }
   }
   if (feed.entries.length < 6) {
     $('#feed-show-more').hide();

@@ -17,15 +17,74 @@ function _Profile() {
         $(".profileHidden").hide();
         $(".profileField").show();
 
-        if (save) {
-            this.founders = _tempFounders;
-
-            self.contact = $("#profileHiddenContact").val();
-            self.employees = $("#profileHiddenEmployees").val();
-            self.revenue = $("#profileHiddenRevenue").val();
-            self.funding = $("#profileHiddenFunding").val();
+        if (save) {            
+            if (this.founders.toString() != _tempFounders.toString()) {
+              var entry = {
+                  Type: "Milestone",
+                  Category: "Founders",
+                  DateTime: new Date(),
+                  
+                  Person: "John Smith",
+                  From : this.founders.length,
+                  To : _tempFounders.length
+              };
+              feed.addEntryToStart(entry);
+              this.founders = _tempFounders.slice(0);
+            }
+            if (self.contact != $("#profileHiddenContact").val()) {
+              var entry = {
+                  Type: "Milestone",
+                  Category: "Contact",
+                  DateTime: new Date(),
+                  
+                  Person: "John Smith",
+                  From : self.contact,
+                  To : $("#profileHiddenContact").val()
+              };
+              feed.addEntryToStart(entry);
+              self.contact = $("#profileHiddenContact").val();
+            }
+            if (self.employees != $("#profileHiddenEmployees").val()) {
+              var entry = {
+                  Type: "Milestone",
+                  Category: "Employees",
+                  DateTime: new Date(),
+                  
+                  Person: "John Smith",
+                  From : self.employees,
+                  To : $("#profileHiddenEmployees").val()
+              };
+              feed.addEntryToStart(entry);
+              self.employees = $("#profileHiddenEmployees").val();
+            }
+            if (self.revenue != $("#profileHiddenRevenue").val()) {
+              var entry = {
+                  Type: "Milestone",
+                  Category: "Revenue",
+                  DateTime: new Date(),
+                  
+                  Person: "John Smith",
+                  From : self.revenue,
+                  To : $("#profileHiddenRevenue").val()
+              };
+              feed.addEntryToStart(entry);
+              self.revenue = $("#profileHiddenRevenue").val();
+            }
+            if (self.funding != $("#profileHiddenFunding").val()) {
+              var entry = {
+                  Type: "Milestone",
+                  Category: "Funding",
+                  DateTime: new Date(),
+                  
+                  Person: "John Smith",
+                  From : self.funding,
+                  To : $("#profileHiddenFunding").val()
+              };
+              feed.addEntryToStart(entry);
+              self.funding = $("#profileHiddenFunding").val();
+            }
         } else {
-            _tempFounders = this.founders;
+            _tempFounders = this.founders.slice(0);
         }
 
         updateFields();
@@ -59,8 +118,6 @@ function _Profile() {
         $("#profileFieldEmployees").html(self.employees);
         $("#profileFieldRevenue").html(self.revenue);
         $("#profileFieldFunding").html(self.funding);
-
-        console.log($("#profileFieldContact").html(), this.contact);
     }
 
     $(document).ready(updateFields);
