@@ -1,4 +1,25 @@
+function showTimePicker(date) {
+   $("#time-picker").show();
+   $(".timepicker th").each(function(index) {
+     $(this).text(date.getDate() + index);
+   });
+    $(".timepicker td").each(function(index) {
+      var day = index % 7;
+      var minutes = 9 * 60 + 30 * Math.floor(index / 7);
+      var myDate = new Date(date);
+      myDate.setDate(date.getDate() + day);
+      myDate.setMinutes(date.getMinutes() + minutes);
+      $(this).attr("date", myDate);
+    });  
+}
+
 $(function(){
+    $(".selections td").addClass("unused");
+    $("#time-picker").hide();
+    $(".timepicker td").not(".info").click(function () {
+       $(this).toggleClass("blackify");
+       $(".unused").first().removeClass("unused").text($(this).attr("date").toString());
+    });
     
    	$('#datepicker').datepicker({
 		changeMonth: true,
@@ -12,33 +33,7 @@ $(function(){
             if( day !== 1 )                // Only manipulate the date if it isn't Mon.
                 myDate.setHours(-24 * (day - 1));   // Set the hours to day number minus 1
             var i=0;
-            html = "<h4>Select up to 10 time slots for meeting:</h4>"
-            html += '<table class="times">';
-            html += '<tr><th class="info"></th></tr>';
-            for (i=9;i<=12;i++){
-                html += '<tr><th class="info">'+i+'</th></tr>';
-            }
-            for (i=1;i<=5;i++){
-                html += '<tr><th class="info">'+i+'</th></tr>';
-            }
-            html += '</table><table class="timepicker"><tr>';
-            
-            for (i=0;i<5;i++){
-                html+= '<td class="info">'+ myDate.getDate() +'</td>'
-                myDate.setDate(myDate.getDate()+1);
-            }
-            
-            html += '</tr>';
-            
-            for (i=1;i<=18;i++){
-                html += '<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
-            }
-            
-            html += '<table class="selections"><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></table>';
-            
-            console.log(html);
-            // $("#timepicker").html(html);
-            $("#timetest").html(html);
+                showTimePicker(myDate);
             }
 	});
 	
