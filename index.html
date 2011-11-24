@@ -24,6 +24,7 @@
     <!-- our JavaScript -->
     <script type="text/javascript" src="js/profile.js"></script>
     <script type="text/javascript" src="js/feed.js"></script>
+    <script type="text/javascript" src="js/modal.js"></script>
     <script type="text/javascript" src="js/date-functions.js"></script>    
     <script>
         
@@ -129,13 +130,21 @@
           <h3>New Entry</h3>
         </div>
         <div class="modal-body">
-            <div class="input">
-              <textarea class="xxlarge" id="textarea" name="textarea" rows="3"></textarea>
-              <span class="help-block">
-                Please be concise and to the point when writing new Entries.
-              </span>
+
+              <label for="entryCategory">Entry Category:</label> 
+              <div class="input">
+                  <select class="medium" name="entryCategory" id="entryCategory">
+                  </select>
+              </div>
+              
+              <label for="textarea">Entry:</label> 
+              <div class="input">
+                  <textarea class="xlarge" id="textarea" name="textarea" rows="3"></textarea>
+              </div>
+                <label for="fileInput">Attach a file:</label> 
+                <div class="input">
                <input class="input-file" id="fileInput" name="fileInput" type="file">
-            </div>          
+               </div>
         </div>
         <div class="modal-footer">
           <a href="#" id="newEntryButton" class="btn primary">Submit</a>
@@ -154,33 +163,5 @@
           <a href="#" class="btn primary">Submit</a>
         </div>
     </div>
-    
-    <script>
-		$('#datepicker').datepicker({
-			changeMonth: true,
-			changeYear: true
-		});
-        $('#newEntryModal').modal({
-          backdrop: true,
-          keyboard: true
-        });
-        $('#newRequestModal').modal({
-          backdrop: true,
-          keyboard: true
-        });
-        $('#newEntryButton').click(function () {
-            var entry = {
-              Type: "Entry",
-              Category: "Funding",
-              DateTime: new Date(),
-              Person: "John Smith",
-              Notes: $("#textarea").val()
-            };
-
-            feed.addEntryToStart(entry);
-            $("#textarea").val("");
-            $('#newEntryModal').modal('hide');
-        });
-    </script>
   </body>
 </html>
