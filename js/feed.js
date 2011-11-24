@@ -13,6 +13,7 @@ var feed = {
       Person: "John Smith",
       From : "$1,000,000",
       To : "$1,500,000",
+      Comments : []
     },
     {
       Type: "Journal",
@@ -21,7 +22,8 @@ var feed = {
       
       Person: "John Smith",
       When : new Date(2011, 11, 20, 10, 24, 00, 00),
-      Notes : "Talked about awesome stuff."
+      Notes : "Talked about awesome stuff.",
+      Comments : []        
     },
     {
       Type: "Entry",
@@ -29,7 +31,8 @@ var feed = {
       DateTime: new Date(2011, 11, 20, 11, 12, 00, 00),
       
       Person: "John Smith",
-      Notes : "Fund all the things!"
+      Notes : "Fund all the things!",
+      Comments : []
     }
   ],
   
@@ -76,9 +79,36 @@ var feed = {
       
       contents.innerHTML = this.entries[i].Notes;
     }
+
+      var comments = $("#commentsTpl").clone();
+      comments.attr("id", "comments" + i);
+      $(li).append(comments);
+
+      var commentBtn = $("#commentBtnTpl").clone();
+      commentBtn.attr("id", "commentBtn" + i);
+      $("A", commentBtn).attr("href", "javascript:feed.addComment(" + i + ");");
+      $(li).append(commentBtn);
     
     return li;
-  }
+  },
+
+    addComment : function(idx) {
+        var btn, commentTxt, comments, newComment, speakerDiv;
+
+        btn = $("#commentBtn" + idx);
+        commentTxt = $("input", btn).val();
+        this.entries[idx].Comments.push(commentTxt);
+
+        newComment = $("<div>");
+        speakerDiv = $("<div>");
+        speakerDiv.html("Startup Y");
+        newComment.addClass("comment");
+        newComment.append(speakerDiv);
+        newComment.append(commentTxt);
+
+        comments = $("#comments" + idx);
+        comments.append(newComment);
+    }
 };
 
 $(document).ready(function() {
