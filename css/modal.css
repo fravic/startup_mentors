@@ -1,0 +1,55 @@
+.highlight {
+    border: 1px solid red;
+}
+
+.white {
+    background: white !important;
+}
+
+#timepicker table, 
+#timepicker table tr, 
+#timepicker table tr td, 
+#timepicker table tr th{
+    padding: 0;
+    margin: 0;
+    font-size: 8px;
+    border: 1px solid #eee;
+}
+
+.timepicker {  
+  border-collapse : collapse;
+  float:left;
+}
+
+.timepicker tr {
+  height: 11px;
+}
+
+.selections {
+  border-collapse: collapse;
+  float: left;
+}
+
+.selections td {
+  width: 150px;
+}
+.selections tr {
+  height: 21px;
+}
+
+.times {
+  border-collapse : collapse;
+  float: left;
+}
+
+.times tr {
+  height: 22px;
+}
+
+.times th {
+  height: 5px;
+}
+
+.blackify {
+  background-color: #000;
+}
