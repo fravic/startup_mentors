@@ -4,6 +4,14 @@
 //
 
 var feed = {
+  categories : [
+    "Contact",
+    "Employees",
+    "Founders",
+    "Funding",
+    "Revenue",
+    "Other"
+  ],
   entries : [
     {
       Type: "Milestone",
