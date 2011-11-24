@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/profile.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
@@ -115,31 +116,40 @@
     <div id="newEntryModal" class="modal hide fade in" style="display: none; ">
         <div class="modal-header">
           <a href="#" class="close">×</a>
-          <h3>Modal Heading</h3>
+          <h3>New Entry</h3>
         </div>
         <div class="modal-body">
-          <p>One fine body…</p>
+            <div class="input">
+              <textarea class="xxlarge" id="textarea" name="textarea" rows="3"></textarea>
+              <span class="help-block">
+                Please be concise and to the point when writing new Entries.
+              </span>
+               <input class="input-file" id="fileInput" name="fileInput" type="file">
+            </div>          
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn primary">Primary</a>
-          <a href="#" class="btn secondary">Secondary</a>
+          <a href="#" class="btn primary">Submit</a>
         </div>
     </div>
     
     <div id="newRequestModal" class="modal hide fade in" style="display: none; ">
         <div class="modal-header">
           <a href="#" class="close">×</a>
-          <h3>Modal Heading</h3>
+          <h3>New Request</h3>
         </div>
         <div class="modal-body">
-          <p>One fine body…</p>
+          <div id="datepicker"></div>
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn primary">Primary</a>
-          <a href="#" class="btn secondary">Secondary</a>
+          <a href="#" class="btn primary">Submit</a>
         </div>
     </div>
+    
     <script>
+		$( "#datepicker" ).datepicker({
+			changeMonth: true,
+			changeYear: true
+		});
         $('#newEntryModal').modal({
           backdrop: true,
           keyboard: true
