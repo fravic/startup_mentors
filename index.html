@@ -108,6 +108,9 @@
           <div id="feed">
         
           </div>
+          <div class="well" id="feed-show-more">
+            <a href="javascript:feed.showMoreEntries(5);">Load More...</a>
+          </div>
       </div><!-- span 11-->
     </div><!-- row -->
     </div><!-- container -->
@@ -160,10 +163,9 @@
         });
         $('#newEntryButton').click(function () {
             var entry = {
-              Type: "Journal",
-              Category: "Entry",
+              Type: "Entry",
+              Category: "Funding",
               DateTime: new Date(),
-              When : new Date(),
               Person: "John Smith",
               Notes: $("#textarea").val()
             };
