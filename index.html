@@ -128,7 +128,7 @@
             </div>          
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn primary">Submit</a>
+          <a href="#" id="newEntryButton" class="btn primary">Submit</a>
         </div>
     </div>
     
@@ -146,7 +146,7 @@
     </div>
     
     <script>
-		$( "#datepicker" ).datepicker({
+		$('#datepicker').datepicker({
 			changeMonth: true,
 			changeYear: true
 		});
@@ -157,6 +157,20 @@
         $('#newRequestModal').modal({
           backdrop: true,
           keyboard: true
+        });
+        $('#newEntryButton').click(function () {
+            var entry = {
+              Type: "Journal",
+              Category: "Entry",
+              DateTime: new Date(),
+              When : new Date(),
+              Person: "John Smith",
+              Notes: $("#textarea").val()
+            };
+
+            console.log($("#textarea").val());
+
+            feed.addEntryToStart(entry);
         });
     </script>
   </body>
