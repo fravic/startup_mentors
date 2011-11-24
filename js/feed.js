@@ -103,6 +103,7 @@ var feed = {
     
     li.appendChild(name);
     li.appendChild(date);
+      $(li).addClass("category" + this.entries[i].Category);
     
     date.innerHTML = this.entries[i].DateTime.dateFormat("H:i m/d/Y");
     
@@ -192,4 +193,22 @@ $(document).ready(function() {
   if (feed.entries.length < 6) {
     $('#feed-show-more').hide();
   }
+    for (i = 0; i < feed.categories.length; i++) {
+        var newOption = $("<option>");
+        newOption.attr("value", feed.categories[i]);
+        newOption.html(feed.categories[i]);
+        $("select[name='filter']").append(newOption);
+    }
+
+    $("select[name='filter']").change(function() {
+        var val = $(this).val();
+        $.each(feed.categories, function(idx, category) {
+            if (category != val && val != "none") {
+                $(".category" + category).hide();
+            } else {
+                $(".category" + category).show();
+            }
+        });
+    });
+
 });
