@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Startup Mentors</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+    }
+    .timepicker {  
+      border-collapse : collapse;
+      float:left;
+    }
+    
+    .selections {
+      border-collapse: collapse;
+      float: left;
+    }
+    .selections td {
+      width: 150px;
+    }
+    .selections tr {
+      height: 21px;
+    }
+    .times {
+      border-collapse : collapse;
+      float: left;
+    }
+    
+    .times tr {
+      height: 22px;
+    }
+    
+    .times th {
+      height: 5px;
+    }
+    .timepicker tr {
+      height: 11px;
+    }
+    
+    .timepicker td {
+      width: 20px;
+    }
+    .blackify {
+      background-color: #000;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div id="time-picker">
+    <table class="times">
+      <tr>
+           <th class="info"></td> 
+      </tr>
+      <tr>
+         <td class="info">9</td> 
+      </tr>
+      <tr>
+         <td class="info">10</td> 
+      </tr>
+      <tr>
+         <td class="info">11</td> 
+      </tr>
+      <tr>
+         <td class="info">12</td> 
+      </tr>
+      <tr>
+         <td class="info">1</td> 
+      </tr>
+      <tr>
+         <td class="info">2</td> 
+      </tr>
+      <tr>
+         <td class="info">3</td> 
+      </tr>
+      <tr>
+         <td class="info">4</td> 
+      </tr>
+      <tr>
+         <td class="info">5</td> 
+      </tr>
+    </table>
+    <table class="timepicker">
+      <tr>
+        <th class="info"></th>
+        <th class="info"></th>  
+        <th class="info"></th>  
+        <th class="info"></th>  
+        <th class="info"></th>  
+        <th class="info"></th>
+        <th class="info"></th>      
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <table class="selections">
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    </div>
+    <script>
+    
+    function showTimePicker(date) {
+       $("#time-picker").show();
+       $(".timepicker th").each(function(index) {
+         $(this).text(date.getDate() + index);
+       });
+        $(".timepicker td").each(function(index) {
+          var day = index % 7;
+          var minutes = 9 * 60 + 30 * Math.floor(index / 7);
+          var myDate = new Date(date);
+          myDate.setDate(date.getDate() + day);
+          myDate.setMinutes(date.getMinutes() + minutes);
+          $(this).attr("date", myDate);
+        });
+       
+       
+    }
+    
+    $(function() {
+      $(".selections td").addClass("unused");
+      $("#time-picker").hide();
+     $(".timepicker td").not(".info").click(function () {
+       $(this).toggleClass("blackify");
+       $(".unused").first().removeClass("unused").text($(this).attr("date").toString());
+     });
+     
+     var d = new Date(2011, 12, 15, 0, 0, 0, 0);
+     showTimePicker(d);
+     
+    
+    });
+    </script>
+  </body>
+</html>

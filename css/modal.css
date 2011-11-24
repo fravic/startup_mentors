@@ -1,0 +1,65 @@
+#datepicker{
+}
+
+.highlight {
+    border: 1px solid red;
+}
+
+.white {
+    background: white !important;
+}
+
+#time-picker{
+}
+
+#time-picker table, 
+#time-picker table tr, 
+#time-picker table tr td, 
+#time-picker table tr th{
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 8px;
+    border: 1px solid #eee !important;
+}
+
+.timepicker {  
+  border-collapse : collapse;
+  float:left !important;
+  width: 200px;
+}
+
+.timepicker tr {
+  height: 11px !important;
+}
+
+.selections {
+  border-collapse: collapse;
+  float: left !important;
+  width: 250px;
+}
+
+.selections td {
+  width: 150px !important;
+}
+
+.selections tr {
+  height: 21px !important;
+}
+
+.times {
+  border-collapse : collapse;
+  float: left !important;
+  width: 10px;
+}
+
+.times tr {
+  height: 22px !important;
+}
+
+.times th {
+  height: 5px !important;
+}
+
+.blackify {
+  background-color: #000 !important;
+}
