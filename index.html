@@ -116,6 +116,12 @@
           <div class="well">
             <a href="#" data-controls-modal="newEntryModal" data-backdrop="static" class="btn large">New Entry</a>
             <a href="#" data-controls-modal="newRequestModal" data-backdrop="static" class="btn large">New Request</a>
+            <div style="float:right">
+            Filter by Category:
+            <select name="filter">
+              <option name="none" value="none">No Filter</option>
+            </select>
+            </div>
           </div> <!-- .well -->
           <div id="feed">
         
@@ -138,7 +144,6 @@
               <label for="entryCategory">Entry Category:</label> 
               <div class="input">
                   <select class="medium" name="entryCategory" id="entryCategory">
-                  </select>
               </div>
               
               <label for="textarea">Entry:</label> 
