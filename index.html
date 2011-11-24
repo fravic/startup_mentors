@@ -168,9 +168,9 @@
               Notes: $("#textarea").val()
             };
 
-            console.log($("#textarea").val());
-
             feed.addEntryToStart(entry);
+            $("#textarea").val("");
+            $('#newEntryModal').modal('hide');
         });
     </script>
   </body>
