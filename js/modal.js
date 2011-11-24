@@ -14,7 +14,7 @@ $(function(){
     $('#newEntryButton').click(function () {
         var entry = {
           Type: "Entry",
-          Category: "Funding",
+          Category: $('#entryCategory').val(),
           DateTime: new Date(),
           Person: "John Smith",
           Notes: $("#textarea").val()
@@ -25,9 +25,12 @@ $(function(){
         $('#newEntryModal').modal('hide');
     });
     
-    var options = '<option value="Choose Category">Choose Category</option>';
-    for (var i = 0; i < feed.categories; i++) {
-        options += '<option value="' + j[i] + '">' + j[i] + '</option>';
+    console.log(feed);
+    console.log(feed.categories);
+    
+    var options = '';
+    for (var i = 0; i < feed.categories.length; i++) {
+        options += '<option value="' +  feed.categories[i] + '">' +  feed.categories[i] + '</option>';
     }
     $('#entryCategory').html(options);
        
