@@ -22,3 +22,29 @@
   width : 98%;
   background-color : white;
 }
+
+#commentBtnTpl {
+  display: none;
+}
+
+.commentBtn {
+    margin-top: 8px;
+    text-align: right;
+}
+
+#commentsTpl {
+    display: none;
+}
+
+.comments {
+    background-color: white;
+    margin-top: 10px;
+}
+
+.comment {
+    padding: 10px;
+}
+
+.comment DIV {
+    font-weight: bold;
+}
