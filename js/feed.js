@@ -4,6 +4,14 @@
 //
 
 var feed = {
+  categories : [
+    "Contact",
+    "Employees",
+    "Founders",
+    "Funding",
+    "Revenue",
+    "Other"
+  ],
   entries : [
     {
       Type: "Milestone",
@@ -119,7 +127,7 @@ var feed = {
 
         newComment = $("<div>");
         speakerDiv = $("<div>");
-        speakerDiv.html("Startup Y");
+        speakerDiv.html("John Smith");
         newComment.addClass("comment");
         newComment.append(speakerDiv);
         newComment.append(commentTxt);
