@@ -28,7 +28,7 @@ var feed = {
     {
       Type: "Entry",
       Category: "Funding",
-      DateTime: new Date(2011, 11, 20, 11, 12, 00, 00),
+      DateTime: new Date(2011, 11, 19, 15, 44, 00, 00),
       
       Person: "John Smith",
       Notes : "Fund all the things!",
@@ -36,9 +36,27 @@ var feed = {
     }
   ],
   
+  end : 0,
+  
   addEntryToStart : function(entry) {
     this.entries.unshift(entry);
     $("#feed-list").prepend(this.generateEntry(0));
+  },
+  
+  addEntryToEnd : function(entry) {
+    this.entries.push(entry);
+    $("#feed-list").append(this.generateEntry(feed.entries.length - 1));
+  },
+  
+  showMoreEntries : function(n) {
+    for (i = 0; (i < n) && (this.end + i < feed.entries.length); i++) {
+      $("#feed-list").append(this.generateEntry(this.end + i));
+    }
+    this.end += n + 1;
+    if (this.end > feed.entries.length) {
+      $('#feed-show-more').hide();
+      this.end = feed.entries.length;
+    }
   },
   
   generateEntry : function(i) {
@@ -113,7 +131,11 @@ var feed = {
 
 $(document).ready(function() {
   $('#feed').append("<ul id='feed-list'></ul>");
-  for (i = 0; i < feed.entries.length; i++) {
+  for (i = 0; (i < feed.entries.length) && (i < 5); i++) {
     $("#feed-list").append(feed.generateEntry(i));
+    this.end++;
+  }
+  if (feed.entries.length < 6) {
+    $('#feed-show-more').hide();
   }
 });

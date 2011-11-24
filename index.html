@@ -5,19 +5,26 @@
     <title>Startup Mentors</title>
     <meta name="description" content="">
     <meta name="author" content="">
+    
+    <!-- Framework CSS -->
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="css/profile.css">
 
+    <!-- our CSS -->
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/feed.css">
+    
+    <!-- frameworks -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
     <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-modal.js"></script>
+    <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-twipsy.js"></script>
+    <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-popover.js"></script>
+
+    <!-- our JavaScript -->
     <script type="text/javascript" src="js/profile.js"></script>
-    
-    <link rel="stylesheet" href="css/feed.css">
-    <script type="text/javascript" src="js/date-functions.js"></script>
     <script type="text/javascript" src="js/feed.js"></script>
-    
+    <script type="text/javascript" src="js/date-functions.js"></script>    
     <script>
         
     </script>
@@ -38,7 +45,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul> -->
-          <p class="pull-right">Logged in as <a href="#">Startup Y</a></p>
+          <p class="pull-right">Logged in as <a href="#">John Smith</a></p>
         </div>
       </div>
     </div>
@@ -108,6 +115,9 @@
           <div id="feed">
         
           </div>
+          <div class="well" id="feed-show-more">
+            <a href="javascript:feed.showMoreEntries(5);">Load More...</a>
+          </div>
       </div><!-- span 11-->
     </div><!-- row -->
     </div><!-- container -->
@@ -165,10 +175,9 @@
         });
         $('#newEntryButton').click(function () {
             var entry = {
-              Type: "Journal",
-              Category: "Entry",
+              Type: "Entry",
+              Category: "Funding",
               DateTime: new Date(),
-              When : new Date(),
               Person: "John Smith",
               Notes: $("#textarea").val()
             };

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Startup Mentors</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+    }
+    .timepicker {  
+      border-collapse : collapse;
+      float:left;
+    }
+    .times {
+      border-collapse : collapse;
+      float: left;
+    }
+    
+    .times tr {
+      height: 22px;
+    }
+    
+    .times th {
+      height: 5px;
+    }
+    .timepicker tr {
+      height: 11px;
+    }
+    .blackify {
+      background-color: #000;
+    }
+    </style>
+  </head>
+
+  <body>
+    <table class="times">
+      <tr>
+           <th class="info"></td> 
+      </tr>
+      <tr>
+         <td class="info">9</td> 
+      </tr>
+      <tr>
+         <td class="info">10</td> 
+      </tr>
+      <tr>
+         <td class="info">11</td> 
+      </tr>
+      <tr>
+         <td class="info">12</td> 
+      </tr>
+      <tr>
+         <td class="info">1</td> 
+      </tr>
+      <tr>
+         <td class="info">2</td> 
+      </tr>
+      <tr>
+         <td class="info">3</td> 
+      </tr>
+      <tr>
+         <td class="info">4</td> 
+      </tr>
+      <tr>
+         <td class="info">5</td> 
+      </tr>
+    </table>
+    <table class="timepicker">
+      <tr>
+        <td class="info">21</td>
+        <td class="info">22</td>  
+        <td class="info">23</td>  
+        <td class="info">24</td>  
+        <td class="info">25</td>  
+        <td class="info">26</td>
+        <td class="info">27</td>      
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <table class="selections">
+    </table>
+    <script>
+    $(function() {
+     $(".timepicker td").not(".info").click(function () {
+       $(this).toggleClass("blackify");
+     });
+    });
+    </script>
+  </body>
+</html>
