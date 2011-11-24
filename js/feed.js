@@ -24,6 +24,26 @@ var feed = {
       Notes : "Talked about awesome stuff."
     }
   ],
+  
+  addEntryToStart : function(entry) {
+    this.entries.unshift(entry);
+    $("#feed-list").prepend(this.generateEntry(0));
+  },
+  
+  addEntryToStartTest : function() {
+    var entry = {
+      Type: "Milestone",
+      Category: "Funding",
+      DateTime: new Date(2011, 11, 20, 12, 39, 00, 00),
+      
+      Person: "John Smith",
+      From : "$1,000,000",
+      To : "$1,500,000",
+    };
+    
+    this.addEntryToStart(entry);
+  }, 
+  
   generateEntry : function(i) {
     var li = document.createElement("li");
     li.setAttribute('class', 'feed-item well');
