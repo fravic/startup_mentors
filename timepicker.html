@@ -40,6 +40,10 @@
     .timepicker tr {
       height: 11px;
     }
+    
+    .timepicker td {
+      width: 20px;
+    }
     .blackify {
       background-color: #000;
     }
@@ -47,6 +51,7 @@
   </head>
 
   <body>
+    <div id="time-picker">
     <table class="times">
       <tr>
            <th class="info"></td> 
@@ -81,13 +86,13 @@
     </table>
     <table class="timepicker">
       <tr>
-        <td class="info">21</td>
-        <td class="info">22</td>  
-        <td class="info">23</td>  
-        <td class="info">24</td>  
-        <td class="info">25</td>  
-        <td class="info">26</td>
-        <td class="info">27</td>      
+        <th class="info"></th>
+        <th class="info"></th>  
+        <th class="info"></th>  
+        <th class="info"></th>  
+        <th class="info"></th>  
+        <th class="info"></th>
+        <th class="info"></th>      
       </tr>
       <tr>
         <td></td>
@@ -274,16 +279,38 @@
         <td></td>
       </tr>
     </table>
+    </div>
     <script>
+    
+    function showTimePicker(date) {
+       $("#time-picker").show();
+       $(".timepicker th").each(function(index) {
+         $(this).text(date.getDate() + index);
+       });
+        $(".timepicker td").each(function(index) {
+          var day = index % 7;
+          var minutes = 9 * 60 + 30 * Math.floor(index / 7);
+          var myDate = new Date(date);
+          myDate.setDate(date.getDate() + day);
+          myDate.setMinutes(date.getMinutes() + minutes);
+          $(this).attr("date", myDate);
+        });
+       
+       
+    }
+    
     $(function() {
       $(".selections td").addClass("unused");
+      $("#time-picker").hide();
      $(".timepicker td").not(".info").click(function () {
        $(this).toggleClass("blackify");
-       $(".unused").first().removeClass("unused").text("10:30 AM, Dec 21st");
+       $(".unused").first().removeClass("unused").text($(this).attr("date").toString());
      });
      
+     var d = new Date(2011, 12, 15, 0, 0, 0, 0);
+     showTimePicker(d);
      
-     
+    
     });
     </script>
   </body>
