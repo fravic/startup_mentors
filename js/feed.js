@@ -22,6 +22,14 @@ var feed = {
       Person: "John Smith",
       When : new Date(2011, 11, 20, 10, 24, 00, 00),
       Notes : "Talked about awesome stuff."
+    },
+    {
+      Type: "Entry",
+      Category: "Funding",
+      DateTime: new Date(2011, 11, 20, 11, 12, 00, 00),
+      
+      Person: "John Smith",
+      Notes : "Fund all the things!"
     }
   ],
   
@@ -29,20 +37,6 @@ var feed = {
     this.entries.unshift(entry);
     $("#feed-list").prepend(this.generateEntry(0));
   },
-  
-  addEntryToStartTest : function() {
-    var entry = {
-      Type: "Milestone",
-      Category: "Funding",
-      DateTime: new Date(2011, 11, 20, 12, 39, 00, 00),
-      
-      Person: "John Smith",
-      From : "$1,000,000",
-      To : "$1,500,000",
-    };
-    
-    this.addEntryToStart(entry);
-  }, 
   
   generateEntry : function(i) {
     var li = document.createElement("li");
@@ -64,6 +58,16 @@ var feed = {
     }
     else if (this.entries[i].Type == "Journal") {
       name.innerHTML = "<b>" + this.entries[i].Person + "</b> added notes for <b>" + this.entries[i].Category + "</b> meeting on <b>" + this.entries[i].When.dateFormat("m/d/Y") + "</b> at <b>" + this.entries[i].When.dateFormat("H:i") + "</b>:";
+      
+      var contents = document.createElement("div");
+      contents.setAttribute('class', 'feed-item-contents');
+      
+      li.appendChild(contents);
+      
+      contents.innerHTML = this.entries[i].Notes;
+    }
+    else if (this.entries[i].Type == "Entry") {
+      name.innerHTML = "<b>" + this.entries[i].Person + "</b> added notes for <b>" + this.entries[i].Category + "</b>:";
       
       var contents = document.createElement("div");
       contents.setAttribute('class', 'feed-item-contents');
