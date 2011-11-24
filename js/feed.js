@@ -138,6 +138,7 @@ var feed = {
       var commentBtn = $("#commentBtnTpl").clone();
       commentBtn.attr("id", "commentBtn" + this.entries[i].Guid);
       $("A", commentBtn).attr("href", "javascript:feed.addComment(\'" + this.entries[i].Guid + "\');");
+      $(".commentTextInput", commentBtn).data("idx", this.entries[i].Guid);
       $(li).append(commentBtn);
       
     for (j = 0; j < this.entries[i].Comments.length; j++) {
@@ -209,6 +210,12 @@ $(document).ready(function() {
                 $(".category" + category).show();
             }
         });
+    });
+
+    $(".commentTextInput").keypress(function(e){
+        if (e.which == 13){
+            feed.addComment($(this).data("idx"));
+        }
     });
 
 });
