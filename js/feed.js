@@ -126,6 +126,8 @@ var feed = {
 
         comments = $("#comments" + idx);
         comments.append(newComment);
+
+        $("input", btn).val("");
     }
 };
 
