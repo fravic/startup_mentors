@@ -4,6 +4,10 @@
 	margin: 0px;
 }
 
+.feed-item {
+  background-color: #fafafa;
+}
+
 .feed-item-name {
   display: inline-block;
   width: 75%;
@@ -23,7 +27,7 @@
 }
 
 .feed-comment {
-  background-color : #dddddd;
+  background-color : #efefef;
 }
 
 #commentBtnTpl {
