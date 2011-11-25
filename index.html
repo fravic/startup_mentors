@@ -57,7 +57,7 @@
         
     </div>
     <div class="row">
-      <div class="span5">
+      <div class="span5" style="position: fixed;">
         <div class="sidebar profilePage">
           <div class="well">
             <div class="profileCenter">
@@ -112,17 +112,21 @@
           </div>
         </div>
       </div>
-      <div class="span11">
-          <div class="well">
-            <a href="#" data-controls-modal="newEntryModal" data-backdrop="static" class="btn large">New Entry</a>
-            <a href="#" data-controls-modal="newRequestModal" data-backdrop="static" class="btn large">New Request</a>
-            <div style="float:right">
-            Filter by Category:
-            <select name="filter">
-              <option name="none" value="none">No Filter</option>
-            </select>
-            </div>
-          </div> <!-- .well -->
+
+      <div class="span11 offset5" style="position: fixed;">
+        <div class="well">
+          <a href="#" data-controls-modal="newEntryModal" data-backdrop="static" class="btn large">New Entry</a>
+          <a href="#" data-controls-modal="newRequestModal" data-backdrop="static" class="btn large">New Request</a>
+          <div style="float:right">
+          Filter by Category:
+          <select name="filter">
+            <option name="none" value="none">No Filter</option>
+          </select>
+          </div>
+        </div> <!-- .well -->
+      </div>
+
+      <div class="span11 offset5" style="margin-top: 95px">
           <div id="feed">
         
           </div>
