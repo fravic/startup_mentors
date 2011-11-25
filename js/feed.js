@@ -72,7 +72,7 @@ var feed = {
         "John Smith",
         "Taylor Anderson"
       ],
-      Time : new Date(0, 0, 0, 1, 30, 00, 00),
+      Time : 1.5,
       Comments : []
     },
     {
@@ -104,7 +104,7 @@ var feed = {
         "John Smith",
         "Taylor Anderson"
       ],
-      Time : new Date(0, 0, 0, 1, 00, 00, 00),
+      Time : 1,
       Comments : [
         {
           Name: "Taylor Anderson",
@@ -212,7 +212,7 @@ var feed = {
         }
       }
       
-      name.innerHTML = persons + " met for <b>" + this.entries[i].Time.dateFormat("H:i") + "</b> about <b>" + this.entries[i].Category + "</b>.";
+      name.innerHTML = persons + " met for <b>" + this.entries[i].Time + " hour" + (this.entries[i].Time == 1 ? "" : "s") + "</b> about <b>" + this.entries[i].Category + "</b>.";
     }
     else if (this.entries[i].Type == "Request") {
       name.innerHTML = "<b>" + this.entries[i].Person + "</b> wants to meet about <b>" + this.entries[i].Category + "</b> at one of:";
