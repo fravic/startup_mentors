@@ -19,6 +19,15 @@ var feed = {
     "Revenue",
     "Other"
   ],
+  
+  types : [
+    "Milestone",
+    "Journal",
+    "Entry",
+    "Meeting",
+    "Request"
+  ],
+  
   entries : [
     {
       Type: "Milestone",
@@ -49,6 +58,33 @@ var feed = {
       
       Person: "John Smith",
       Notes : "We need to start looking for more funding.",
+      Comments : []
+    },
+    {
+      Type: "Meeting",
+      Category: "Funding",
+      DateTime: new Date(2011, 11, 17, 9, 30, 00, 00),
+      
+      Persons: [
+        "John Smith",
+        "Taylor Anderson"
+      ],
+      Time : new Date(0, 0, 0, 1, 30, 00, 00),
+      Comments : []
+    },
+    {
+      Type: "Request",
+      Category: "Funding",
+      DateTime: new Date(2011, 11, 17, 9, 26, 00, 00),
+      
+      Person: "John Smith",
+      When : [
+        new Date(2011, 11, 24, 09, 30, 00, 00),
+        new Date(2011, 11, 24, 10, 00, 00, 00),
+        new Date(2011, 11, 24, 10, 30, 00, 00),
+        new Date(2011, 11, 25, 09, 30, 00, 00),
+        new Date(2011, 11, 25, 10, 30, 00, 00),
+      ],
       Comments : []
     }
   ],
@@ -129,6 +165,39 @@ var feed = {
       li.appendChild(contents);
       
       contents.innerHTML = this.entries[i].Notes;
+    }
+    else if (this.entries[i].Type == "Meeting") {
+      var persons = "";
+      
+      for (j = 0; j < this.entries[i].Persons.length; j++) {
+        if (j == 0) {
+          persons = "<b>" + this.entries[i].Persons[j] + "</b>";
+        }
+        else if (j == this.entries[i].Persons.length - 1) {
+          persons = persons + " and " + "<b>" + this.entries[i].Persons[j] + "</b>";
+        }
+        else {
+          persons = persons + ", " + "<b>" + this.entries[i].Persons[j] + "</b>";
+        }
+      }
+      
+      name.innerHTML = persons + " met for <b>" + this.entries[i].Time.dateFormat("H:i") + "</b> about <b>" + this.entries[i].Category + "</b>.";
+    }
+    else if (this.entries[i].Type == "Request") {
+      name.innerHTML = "<b>" + this.entries[i].Person + "</b> wants to meet about <b>" + this.entries[i].Category + "</b> at one of:";
+      
+      var contents = document.createElement("div");
+      contents.setAttribute('class', 'feed-item-contents');
+      
+      li.appendChild(contents);
+      
+      var list = document.createElement("ul");
+      for (j = 0; j < this.entries[i].When.length; j++) {
+        var datetime = document.createElement("li");
+        datetime.innerHTML = "<b>" + this.entries[i].When[j].dateFormat("m/d/Y H:i") + "</b>";
+        list.appendChild(datetime);
+      }
+      contents.appendChild(list);
     }
 
       var comments = $("#commentsTpl").clone();
