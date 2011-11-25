@@ -32,7 +32,7 @@ var feed = {
     {
       Type: "Milestone",
       Category: "Funding",
-      DateTime: new Date(2011, 11, 20, 12, 39, 00, 00),
+      DateTime: new Date(2011, 10, 20, 12, 39, 00, 00),
       
       Person: "John Smith",
       From : "$1,000,000",
@@ -42,10 +42,10 @@ var feed = {
     {
       Type: "Journal",
       Category: "Funding",
-      DateTime: new Date(2011, 11, 20, 11, 12, 00, 00),
+      DateTime: new Date(2011, 10, 20, 11, 12, 00, 00),
       
       Person: "John Smith",
-      When : new Date(2011, 11, 20, 10, 24, 00, 00),
+      When : new Date(2011, 10, 20, 10, 24, 00, 00),
       Notes : "Talked about meeting with SV VCs.",
       Comments : [
         {
@@ -57,7 +57,7 @@ var feed = {
     {
       Type: "Entry",
       Category: "Funding",
-      DateTime: new Date(2011, 11, 19, 15, 44, 00, 00),
+      DateTime: new Date(2011, 10, 19, 15, 44, 00, 00),
       
       Person: "John Smith",
       Notes : "We need to start looking for more funding.",
@@ -66,7 +66,7 @@ var feed = {
     {
       Type: "Meeting",
       Category: "Funding",
-      DateTime: new Date(2011, 11, 17, 9, 30, 00, 00),
+      DateTime: new Date(2011, 10, 17, 9, 30, 00, 00),
       
       Persons: [
         "John Smith",
@@ -78,20 +78,37 @@ var feed = {
     {
       Type: "Request",
       Category: "Funding",
-      DateTime: new Date(2011, 11, 17, 9, 26, 00, 00),
+      DateTime: new Date(2011, 10, 17, 9, 26, 00, 00),
       
       Person: "John Smith",
       When : [
-        new Date(2011, 11, 24, 09, 30, 00, 00),
-        new Date(2011, 11, 24, 10, 00, 00, 00),
-        new Date(2011, 11, 24, 10, 30, 00, 00),
-        new Date(2011, 11, 25, 09, 30, 00, 00),
-        new Date(2011, 11, 25, 10, 30, 00, 00),
+        new Date(2011, 10, 24, 09, 30, 00, 00),
+        new Date(2011, 10, 24, 10, 00, 00, 00),
+        new Date(2011, 10, 24, 10, 30, 00, 00),
+        new Date(2011, 10, 25, 09, 30, 00, 00),
+        new Date(2011, 10, 25, 10, 30, 00, 00),
       ],
       Comments : [
         {
           Name: "Taylor Anderson",
           Comment: "I am actually leaving town on the 21st, would you be available on the 20th?"
+        }
+      ]
+    },
+    {
+      Type: "Meeting",
+      Category: "Other",
+      DateTime: new Date(2011, 10, 10, 12, 30, 00, 00),
+      
+      Persons: [
+        "John Smith",
+        "Taylor Anderson"
+      ],
+      Time : new Date(0, 0, 0, 1, 00, 00, 00),
+      Comments : [
+        {
+          Name: "Taylor Anderson",
+          Comment: "On-boarding meeting."
         }
       ]
     }
@@ -113,6 +130,8 @@ var feed = {
     entry.Comments = [];
     
     this.entries.unshift(entry);
+    this.end += 1;
+    
     $("#feed-list").prepend(this.generateEntry(0));
   },
   
@@ -121,7 +140,11 @@ var feed = {
     entry.Comments = [];
     
     this.entries.push(entry);
-    $("#feed-list").append(this.generateEntry(feed.entries.length - 1));
+    this.end += 1;
+    
+    if (this.end == feed.entries.length - 1) {
+      $("#feed-list").append(this.generateEntry(feed.entries.length - 1));
+    }
   },
   
   showMoreEntries : function(n) {
@@ -268,7 +291,7 @@ $(document).ready(function() {
     feed.entries[i].Guid = generate_Guid();
     if (i < 5) {
       $("#feed-list").append(feed.generateEntry(i));
-      this.end++;
+      feed.end += 1;
     }
   }
   if (feed.entries.length < 6) {
