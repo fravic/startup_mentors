@@ -18,14 +18,13 @@
 #time-picker table tr th{
     padding: 0 !important;
     margin: 0 !important;
-    font-size: 8px;
     border: 1px solid #eee !important;
 }
 
 .timepicker {  
   border-collapse : collapse;
   float:left !important;
-  width: 200px;
+  width: 70%;
 }
 
 .timepicker tr {
@@ -35,7 +34,7 @@
 .selections {
   border-collapse: collapse;
   float: left !important;
-  width: 250px;
+  width: 30%;
 }
 
 .selections td {

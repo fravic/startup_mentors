@@ -1,24 +1,44 @@
 function showTimePicker(date) {
-   $("#time-picker").show();
-   $(".timepicker th").each(function(index) {
-     $(this).text(date.getDate() + index);
-   });
-    $(".timepicker td").each(function(index) {
+    $("#time-picker").show();
+    $("#datepicker").hide();
+    $(".timepicker th").not(":first").each(function(index) {
+        var d = new Date(date);
+        d.setDate(date.getDate() + index)
+        $(this).text(d.dateFormat("m/d"));
+    });
+
+    $(".timepicker td").not(".info").each(function(index) {
+      $(this).css("width", "300px");
       var day = index % 7;
       var minutes = 9 * 60 + 30 * Math.floor(index / 7);
       var myDate = new Date(date);
       myDate.setDate(date.getDate() + day);
-      myDate.setMinutes(date.getMinutes() + minutes);
+      myDate.setMinutes(minutes);
       $(this).attr("date", myDate);
     });  
 }
 
+var dates = [];
+
 $(function(){
-    $(".selections td").addClass("unused");
     $("#time-picker").hide();
     $(".timepicker td").not(".info").click(function () {
        $(this).toggleClass("blackify");
-       $(".unused").first().removeClass("unused").text($(this).attr("date").toString());
+
+       var date = $(this).attr("date");
+       if(_(dates).include(date)) {
+           dates = _(dates).without(date);
+       } else {
+           dates.push($(this).attr("date"));
+       }
+
+       var list = document.createElement("ul");
+       for (j = 0; j < dates.length; j++) {
+         var datetime = document.createElement("li");
+         datetime.innerHTML = "<b>" + (new Date(dates[j])).dateFormat("m/d/Y H:i") + "</b>";
+         list.appendChild(datetime);
+       }
+       $(".selections").html(list);
     });
     
    	$('#datepicker').datepicker({
@@ -67,6 +87,23 @@ $(function(){
         $("#textarea").val("");
         $('#newEntryModal').modal('hide');
     });
+
+    $('#newRequestButton').click(function () {
+        var request = {
+          Type: "Request",
+          Category: "Funding",
+          DateTime: new Date(2011, 11, 17, 9, 26, 00, 00),
+
+          Person: "John Smith",
+          When : _(dates).map(function(d){return new Date(d);}).sort(function(d1, d2) {return (d1 > d2) ? 1 : -1}),
+        };
+
+
+        feed.addEntryToStart(request);
+        $("#textarea").val("");
+        $('#newRequestModal').modal('hide');
+    });
+
         
     var options = '';
     for (var i = 0; i < feed.categories.length; i++) {

@@ -21,6 +21,7 @@
     <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-modal.js"></script>
     <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-twipsy.js"></script>
     <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-popover.js"></script>
+    <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
 
     <!-- our JavaScript -->
     <script type="text/javascript" src="js/profile.js"></script>
@@ -174,43 +175,14 @@
         <div class="modal-body clearfix">
             
           <!-- date picker that will pick week -->
-          <h4>Select a week:</h4>
-          <div id="datepicker"></div>
+          <div id="datepicker">
+            <h4>Select a week:</h4>
+          </div>
           <div id="time-picker">
-                <table class="times">
-                    <tr>
-                         <th class="info"></td> 
-                    </tr>
-                    <tr>
-                       <td class="info">9</td> 
-                    </tr>
-                    <tr>
-                       <td class="info">10</td> 
-                    </tr>
-                    <tr>
-                       <td class="info">11</td> 
-                    </tr>
-                    <tr>
-                       <td class="info">12</td> 
-                    </tr>
-                    <tr>
-                       <td class="info">1</td> 
-                    </tr>
-                    <tr>
-                       <td class="info">2</td> 
-                    </tr>
-                    <tr>
-                       <td class="info">3</td> 
-                    </tr>
-                    <tr>
-                       <td class="info">4</td> 
-                    </tr>
-                    <tr>
-                       <td class="info">5</td> 
-                    </tr>
-                </table>
+                <h4>Select timeslots</h4>
                 <table class="timepicker">
                     <tr>
+                      <th class="info"></th>
                       <th class="info"></th>
                       <th class="info"></th>  
                       <th class="info"></th>  
@@ -220,6 +192,7 @@
                       <th class="info"></th>      
                     </tr>
                     <tr>
+                      <td class="info" rowspan="2">9am</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -238,6 +211,7 @@
                       <td></td>
                     </tr>
                     <tr>
+                      <td class="info" rowspan="2">10am</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -256,6 +230,7 @@
                       <td></td>
                     </tr>
                     <tr>
+                      <td class="info" rowspan="2">11am</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -274,6 +249,7 @@
                       <td></td>
                     </tr>
                     <tr>
+                      <td class="info" rowspan="2">12pm</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -292,6 +268,7 @@
                       <td></td>
                     </tr>
                     <tr>
+                      <td class="info" rowspan="2">1pm</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -310,6 +287,7 @@
                       <td></td>
                     </tr>
                     <tr>
+                      <td class="info" rowspan="2">2pm</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -328,6 +306,7 @@
                       <td></td>
                     </tr>
                     <tr>
+                      <td class="info" rowspan="2">3pm</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -346,6 +325,7 @@
                       <td></td>
                     </tr>
                     <tr>
+                      <td class="info" rowspan="2">4pm</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -364,6 +344,7 @@
                       <td></td>
                     </tr>
                     <tr>
+                      <td class="info" rowspan="2">5pm</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -382,33 +363,13 @@
                       <td></td>
                     </tr>
               </table>
-                <table class="selections">
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </table>
+              <div class="selections">
+              </div>
           </div>
           <div class="clearfix" style="clear:both;"></div>
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn primary">Submit</a>
+          <a href="#" id="newRequestButton" class="btn primary">Request Meeting</a>
         </div>
     </div>
     
