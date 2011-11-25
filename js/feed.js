@@ -48,7 +48,10 @@ var feed = {
       When : new Date(2011, 11, 20, 10, 24, 00, 00),
       Notes : "Talked about meeting with SV VCs.",
       Comments : [
-        "Oh yeah, also discussed possible government funding."
+        {
+          Name: "John Smith",
+          Comment: "Oh yeah, also discussed possible government funding."
+        }
       ]        
     },
     {
@@ -85,7 +88,12 @@ var feed = {
         new Date(2011, 11, 25, 09, 30, 00, 00),
         new Date(2011, 11, 25, 10, 30, 00, 00),
       ],
-      Comments : []
+      Comments : [
+        {
+          Name: "Taylor Anderson",
+          Comment: "I am actually leaving town on the 21st, would you be available on the 20th?"
+        }
+      ]
     }
   ],
   
@@ -213,14 +221,14 @@ var feed = {
     for (j = 0; j < this.entries[i].Comments.length; j++) {
       var commentTxt, newComment, speakerDiv;
       
-      commentTxt = this.entries[i].Comments[j];
+      comment = this.entries[i].Comments[j];
       
       newComment = $("<div class=\"feed-comment\">");
       speakerDiv = $("<div>");
-      speakerDiv.html("<b>John Smith</b> commented:");
+      speakerDiv.html("<b>" + comment.Name + "</b> commented:");
       newComment.addClass("comment");
       newComment.append(speakerDiv);
-      newComment.append(commentTxt);
+      newComment.append(comment.Comment);
       
       comments.append(newComment);
     }
@@ -235,7 +243,10 @@ var feed = {
         commentTxt = $("input", btn).val();
         
         var entry = this.entryForGuid(Guid);
-        entry.Comments.push(commentTxt);
+        entry.Comments.push({
+          Name: "John Smith",
+          Comment: commentTxt
+        });
 
         newComment = $("<div class=\"feed-comment\">");
         speakerDiv = $("<div>");
