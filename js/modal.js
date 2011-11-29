@@ -18,6 +18,7 @@ function showTimePicker(date) {
     });  
 }
 
+
 var dates = [];
 
 $(function(){
@@ -56,6 +57,14 @@ $(function(){
                 showTimePicker(myDate);
             }
 	});
+	
+	$( "#backToDate" ).click(function(){
+	    $("#datepicker").show();
+	    $("#time-picker").hide();
+	    $(".selections").html("");
+	    $(".timepicker td").removeClass("blackify");
+	    dates = [];
+	})
 	
 	$( "#datepicker" ).datepicker().click(function(event) {
         // highlight the TR
