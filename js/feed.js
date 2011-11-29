@@ -370,7 +370,7 @@ $(document).ready(function() {
                   var text = $(this).find(".feed-item-name").text() + $(this).find(".feed-item-contents").text() + $(this).find(".feed-comment").text();
                   match = regex.exec(text);
                 }
-                if((t == "none" || $(this).hasClass("type" + t)) && (c == "none" || $(this).hasClass("category" + c)) && (!match || match.length > 0)) {
+                if((t == "none" || $(this).hasClass("type" + t)) && (c == "none" || $(this).hasClass("category" + c)) && (q == "" || (match && match.length > 0))) {
                     $(this).show();
                 }
             });
