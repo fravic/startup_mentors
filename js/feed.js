@@ -361,8 +361,14 @@ $(document).ready(function() {
             // insert hide things that doesn't contain the the search query here            
             
             $(".feed-item").hide();
+            var regex = new RegExp(q, "i");
             $(".feed-item").each(function() {
-                if((t == "none" || $(this).hasClass("type" + t)) && (c == "none" || $(this).hasClass("category" + c))) {
+                var match = null;
+                if(q != "") {
+                  var text = $(this).find(".feed-item-name").text() + $(this).find(".feed-item-contents").text() + $(this).find(".feed-comment").text();
+                  match = regex.exec(text);
+                }
+                if((t == "none" || $(this).hasClass("type" + t)) && (c == "none" || $(this).hasClass("category" + c)) && (match && match.length > 0)) {
                     $(this).show();
                 }
             });
