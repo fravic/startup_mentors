@@ -170,6 +170,7 @@ var feed = {
     
     li.appendChild(name);
     li.appendChild(date);
+      $(li).addClass("type" + this.entries[i].Type);
       $(li).addClass("category" + this.entries[i].Category);
     
     date.innerHTML = this.entries[i].DateTime.dateFormat("H:i m/d/Y");
@@ -287,6 +288,7 @@ var feed = {
 
 $(document).ready(function() {
     $('#feed').append("<ul id='feed-list'></ul>");
+
     for (i = 0; i < feed.entries.length; i++) {
         feed.entries[i].Guid = generate_Guid();
         if (i < 5) {
@@ -325,6 +327,7 @@ $(document).ready(function() {
 
     $('#showSearchButton').click(function(){
         $('#searchFilterWell').toggle();
+        $('#searchFilterWell')
     });
 
     $(".commentTextInput").keypress(function(e){
