@@ -42,39 +42,39 @@ $(function(){
        $(".selections").html(list);
     });
     
-   	$('#datepicker').datepicker({
-		changeMonth: true,
-		changeYear: true,
-		firstDay: 1,
-		onSelect: function(dateText, inst) {
-		    var d = dateText.split("/");
-		    var myDate=new Date();
-		    myDate.setFullYear(d[2],d[0]-1,d[1]);
-		    var day = myDate.getDay();
+    $('#datepicker').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        firstDay: 1,
+        onSelect: function(dateText, inst) {
+            var d = dateText.split("/");
+            var myDate=new Date();
+            myDate.setFullYear(d[2],d[0]-1,d[1]);
+            var day = myDate.getDay();
             if( day !== 1 )                // Only manipulate the date if it isn't Mon.
                 myDate.setHours(-24 * (day - 1));   // Set the hours to day number minus 1
             var i=0;
                 showTimePicker(myDate);
             $("#newRequestButton").removeClass("disabled");
             }
-	});
-	
-	$( "#backToDate" ).click(function(){
-	    $("#datepicker").show();
-	    $("#time-picker").hide();
-	    $(".selections").html("");
-	    $(".timepicker td").removeClass("blackify");
-	    $("#newRequestButton").addClass("disabled");
-	    dates = [];
-	})
-	
-	$( "#datepicker" ).datepicker().click(function(event) {
+    });
+    
+    $( "#backToDate" ).click(function(){
+        $("#datepicker").show();
+        $("#time-picker").hide();
+        $(".selections").html("");
+        $(".timepicker td").removeClass("blackify");
+        $("#newRequestButton").addClass("disabled");
+        dates = [];
+    })
+    
+    $( "#datepicker" ).datepicker().click(function(event) {
         // highlight the TR
         $(".ui-datepicker-current-day").parent().addClass('highlight');
         // highlight the TD > A
         $(".ui-datepicker-current-day").siblings().find('a').addClass('white');
     }); 
-	
+    
     $('#newEntryModal').modal({
       backdrop: true,
       keyboard: true
@@ -88,14 +88,14 @@ $(function(){
     // when Request Modal Dialog closes...
     // reset the content
     $("#newRequestModal").bind('hidden', function () {
-	    $("#datepicker").show();
-	    $("#time-picker").hide();
-	    $(".selections").html("");
-	    $(".timepicker td").removeClass("blackify");
-	    $('#datepicker').datepicker('setDate', null);
-	    $("#newRequestButton").addClass('disabled');
-	    dates = [];
-	    
+        $("#datepicker").show();
+        $("#time-picker").hide();
+        $(".selections").html("");
+        $(".timepicker td").removeClass("blackify");
+        $('#datepicker').datepicker('setDate', null);
+        $("#newRequestButton").addClass('disabled');
+        dates = [];
+        
     })
     
     $('#newEntryButton').click(function () {
