@@ -352,7 +352,7 @@ $(document).ready(function() {
         
         if (q == "" && t == "none" && c == "none"){
             $(".feed-item").show();
-            $('#showSearchButton').html("Search & Filter").removeClass('danger');
+            $('#showSearchButton').html("Search").removeClass('danger');
         }else{
     
             $('#showSearchButton').html("Clear Search").addClass('danger');
