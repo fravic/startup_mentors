@@ -334,14 +334,16 @@ $(document).ready(function() {
         var t = $("select[name='filterType']").val("none");
         var c = $("select[name='filterCategory']").val("none");
         $(".feed-item").show();
-        $('#showSearchButton').html("Search & Filter").removeClass('danger');        
+        $('#showSearchButton').html("Search").removeClass('danger');
     }
 
     $('#showSearchButton').click(function(){
         if ($(this).hasClass("danger")){
             clearSearch();
         }else{
-            $('#searchFilterWell').toggle();
+            $('#searchFilterWell').show();
+            $('#actions').hide();
+            $('#feed-wrapper').css('margin-top', $('#searchFilterWell').outerHeight() + 30);
         }
     });
     
@@ -361,19 +363,29 @@ $(document).ready(function() {
             // insert hide things that doesn't contain the the search query here            
             
             $(".feed-item").hide();
+            var regex = new RegExp(q, "i");
             $(".feed-item").each(function() {
-                if((t == "none" || $(this).hasClass("type" + t)) && (c == "none" || $(this).hasClass("category" + c))) {
+                var match = null;
+                if(q != "") {
+                  var text = $(this).find(".feed-item-name").text() + $(this).find(".feed-item-contents").text() + $(this).find(".feed-comment").text();
+                  match = regex.exec(text);
+                }
+                if((t == "none" || $(this).hasClass("type" + t)) && (c == "none" || $(this).hasClass("category" + c)) && (!match || match.length > 0)) {
                     $(this).show();
                 }
             });
         }
         
-        $('#searchFilterWell').toggle();
+        $('#searchFilterWell').hide();
+        $('#actions').show();
+        $('#feed-wrapper').css('margin-top', $('#actions').outerHeight() + 30);
     });
     
     $('#searchCancel').click(function(){
         clearSearch();
-        $('#searchFilterWell').toggle();
+        $('#searchFilterWell').hide();
+        $('#actions').show();
+        $('#feed-wrapper').css('margin-top', $('#actions').outerHeight() + 30);
     });
 
     $(".commentTextInput").keypress(function(e){
