@@ -14,9 +14,7 @@
 }
 
 .feed-item-date {
-  display: inline-block;
-  width: 25%;
-  text-align: right;
+  float: right;
 }
 
 .feed-item-contents {
