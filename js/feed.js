@@ -314,20 +314,82 @@ $(document).ready(function() {
         $("select[name='filterCategory']").append(newOption);
     }
 
-    $("select[name='filterCategory']").change(function() {
-        var val = $(this).val();
+    // $("select[name='filterCategory']").change(function() {
+    //     var val = $(this).val();
+    //     $.each(feed.categories, function(idx, category) {
+    //         if (category != val && val != "none") {
+    //             $(".category" + category).hide();
+    //         } else {
+    //             $(".category" + category).show();
+    //         }
+    //     });
+    // });
+
+    $('#showSearchButton').click(function(){
+        $('#searchFilterWell').toggle();
+    });
+    
+    $('#searchButton').click(function(){
+        var q = $("#searchText").val();
+        var t = $("select[name='filterType']").val();
+        var c = $("select[name='filterCategory']").val();
+        
+        if (q == "" && t == "none" && c == "none"){
+            // debug
+            alert("no filter");
+        }
+        
+        $('#showSearchButton').addClass('info');
+        $('#showSearchButton').val('Searched & Filtered');
+        
+        // insert hide things that doesn't contain the the search query here
+        $.each(feed.types, function(idx, type) {
+            if (type != t && t != "none") {
+                $(".type" + type).hide();
+            } else {
+                $(".type" + type).show();
+            }
+        });
+        
         $.each(feed.categories, function(idx, category) {
-            if (category != val && val != "none") {
+            if (category != c && c != "none") {
                 $(".category" + category).hide();
             } else {
                 $(".category" + category).show();
             }
         });
     });
-
-    $('#showSearchButton').click(function(){
+    
+    $('#searchCancel').click(function(){
+        var q = $("#searchText").val("");
+        var t = $("select[name='filterType']").val("none");
+        var c = $("select[name='filterCategory']").val("none");
+        
+        
+        $('#showSearchButton').removeClass('info');
+        $('#showSearchButton').val('Search & Filter');
+        
+        var t = "none";
+        var c = "none";
+        
+        // insert hide things that doesn't contain the the search query here
+        $.each(feed.types, function(idx, type) {
+            if (type != t && t != "none") {
+                $(".type" + type).hide();
+            } else {
+                $(".type" + type).show();
+            }
+        });
+        
+        $.each(feed.categories, function(idx, category) {
+            if (category != c && c != "none") {
+                $(".category" + category).hide();
+            } else {
+                $(".category" + category).show();
+            }
+        });
+        
         $('#searchFilterWell').toggle();
-        $('#searchFilterWell')
     });
 
     $(".commentTextInput").keypress(function(e){
