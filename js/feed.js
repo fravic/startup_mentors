@@ -28,7 +28,7 @@ var feed = {
       Person: "John Smith",
       From : "$1,000,000",
       To : "$1,500,000",
-      Comments : []
+      Comments : ["New Funding from Peter Thiel and Bessimer Partners"]
     },
     {
       Type: "Journal",
@@ -49,6 +49,37 @@ var feed = {
       
       Person: "John Smith",
       Notes : "We need to start looking for more funding.",
+      Comments : []
+    },
+    {
+      Type: "Milestone",
+      Category: "Employee Hires",
+      DateTime: new Date(2011, 11, 15, 12, 32, 00, 00),
+      
+      Person: "Jayne Smith",
+      From : "3",
+      To : "4",
+      Comments : ["Hired new front end UX designer, Fravic Fernando"]
+    },
+    {
+      Type: "Journal",
+      Category: "Ecosystem Leveraging",
+      DateTime: new Date(2011, 11, 20, 11, 12, 00, 00),
+      
+      Person: "John Smith",
+      When : new Date(2011, 11, 20, 10, 24, 00, 00),
+      Notes : "Talked about ecosystem strategy to monetize local-geo-coupon-social photos with hipster filters",
+      Comments : [
+        "This was so much fun!", "I looooove leveraging our ecosystem"
+      ]        
+    },
+    {
+      Type: "Entry",
+      Category: "Shit Fans",
+      DateTime: new Date(2011, 11, 19, 15, 44, 00, 00),
+      
+      Person: "John Smith",
+      Notes : "Fan just hit the shit!",
       Comments : []
     }
   ],
