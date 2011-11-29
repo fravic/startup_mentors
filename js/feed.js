@@ -334,7 +334,7 @@ $(document).ready(function() {
         var t = $("select[name='filterType']").val("none");
         var c = $("select[name='filterCategory']").val("none");
         $(".feed-item").show();
-        $('#showSearchButton').html("Search & Filter").removeClass('danger');        
+        $('#showSearchButton').html("Search").removeClass('danger');
     }
 
     $('#showSearchButton').click(function(){
