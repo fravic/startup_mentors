@@ -166,7 +166,6 @@
           <h3>New Entry</h3>
         </div>
         <div class="modal-body">
-
               <label for="entryCategory">Entry Category:</label> 
               <div class="input">
                   <select class="medium" name="entryCategory" id="entryCategory">
@@ -176,10 +175,11 @@
               <div class="input">
                   <textarea class="xlarge" id="textarea" name="textarea" rows="3"></textarea>
               </div>
-                <label for="fileInput">Attach a file:</label> 
-                <div class="input">
-               <input class="input-file" id="fileInput" name="fileInput" type="file">
-               </div>
+              
+              <label for="fileInput">Attach a file:</label> 
+              <div class="input">
+              <input class="input-file" id="fileInput" name="fileInput" type="file">
+              </div>
         </div>
         <div class="modal-footer">
           <a href="#" id="newEntryButton" class="btn primary">Submit</a>
@@ -198,6 +198,7 @@
             <h4>Select a week:</h4>
           </div>
           <div id="time-picker">
+                <a href="#" id="backToDate" class="btn">« Back to selecting a week</a>
                 <h4>Select timeslots</h4>
                 <table class="timepicker">
                     <tr>
@@ -388,7 +389,9 @@
           <div class="clearfix" style="clear:both;"></div>
         </div>
         <div class="modal-footer">
-          <a href="#" id="newRequestButton" class="btn primary">Request Meeting</a>
+            <label for="entryCategory">Meeting Category:</label> 
+            <select class="medium" name="meetingCategory" id="meetingCategory"></select>
+          <a href="#" id="newRequestButton" class="btn primary disabled">Request Meeting</a>
         </div>
     </div>
     
