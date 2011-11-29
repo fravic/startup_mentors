@@ -162,12 +162,16 @@ var feed = {
     var li = document.createElement("li");
     li.setAttribute('class', 'feed-item well');
     
+    var icon = document.createElement("div");
+    icon.setAttribute('class', 'icon');
+    
     var name = document.createElement("div");
     name.setAttribute('class', 'feed-item-name');
     
     var date = document.createElement("div");
     date.setAttribute('class', 'feed-item-date');
-    
+
+    li.appendChild(icon);
     li.appendChild(name);
     li.appendChild(date);
       $(li).addClass("type" + this.entries[i].Type);
