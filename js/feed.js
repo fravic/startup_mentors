@@ -345,6 +345,7 @@ $(document).ready(function() {
             $('#actions').hide();
             $('#feed-wrapper').css('margin-top', $('#searchFilterWell').outerHeight() + 30);
         }
+        return false;
     });
     
     $('#searchButton').click(function(){

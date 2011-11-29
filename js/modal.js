@@ -110,6 +110,7 @@ $(function(){
         feed.addEntryToStart(entry);
         $("#textarea").val("");
         $('#newEntryModal').modal('hide');
+        return false;
     });
 
     $('#newRequestButton').click(function () {
@@ -128,6 +129,7 @@ $(function(){
             $("#textarea").val("");
             $('#newRequestModal').modal('hide');
         }
+        return false;
     });
 
         
