@@ -14,9 +14,7 @@
 }
 
 .feed-item-date {
-  display: inline-block;
-  width: 25%;
-  text-align: right;
+  float: right;
 }
 
 .feed-item-contents {
@@ -52,28 +50,30 @@
     padding: 10px;
 }
 
-.typeEntry{
-    /*color position size repeat origin clip attachment image;*/
-    background-size: 30px 30px;
-    background: #FAFAFA url(../img/conversation.png) no-repeat 10px 95%;
+.feed-item .icon {
+  height: 10px;
+  width: 10px;
+  float: left;
+  margin: 4px 5px;
+  background-image: url("../img/fb-icons.png");
 }
 
-.typeMilestone{
-    background-size: 30px 30px;
-    background: #FAFAFA url(../img/heart.png) no-repeat 10px 95%;
+.typeEntry .icon{
+    background-position: 0px -67px;
 }
 
-.typeJournal{
-    background-size: 30px 30px;
-    background: #FAFAFA url(../img/conversation.png) no-repeat 10px 95%;
+.typeMilestone .icon{
+    background-position: 11px -2px;
 }
 
-.typeMeeting{
-    background-size: 30px 30px;
-    background: #FAFAFA url(../img/clock.png) no-repeat 10px 95%;
+.typeJournal .icon{
+    background-position: 0px -133px;
 }
 
-.typeRequest{
-    background-size: 30px 30px;
-    background: #FAFAFA url(../img/question.png) no-repeat 10px 95%;
+.typeMeeting .icon{
+    background-position: 0px -123px;
+}
+
+.typeRequest .icon{
+    background-position: 0px -101px;
 }
