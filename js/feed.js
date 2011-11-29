@@ -286,25 +286,33 @@ var feed = {
 };
 
 $(document).ready(function() {
-  $('#feed').append("<ul id='feed-list'></ul>");
-  for (i = 0; i < feed.entries.length; i++) {
-    feed.entries[i].Guid = generate_Guid();
-    if (i < 5) {
-      $("#feed-list").append(feed.generateEntry(i));
-      feed.end += 1;
+    $('#feed').append("<ul id='feed-list'></ul>");
+    for (i = 0; i < feed.entries.length; i++) {
+        feed.entries[i].Guid = generate_Guid();
+        if (i < 5) {
+          $("#feed-list").append(feed.generateEntry(i));
+          feed.end += 1;
+        }
     }
-  }
-  if (feed.entries.length < 6) {
-    $('#feed-show-more').hide();
-  }
+    if (feed.entries.length < 6) {
+        $('#feed-show-more').hide();
+    }
+
+    for (i = 0; i < feed.types.length; i++) {
+        var newOption = $("<option>");
+        newOption.attr("value", feed.types[i]);
+        newOption.html(feed.types[i]);
+        $("select[name='filterType']").append(newOption);
+    }
+
     for (i = 0; i < feed.categories.length; i++) {
         var newOption = $("<option>");
         newOption.attr("value", feed.categories[i]);
         newOption.html(feed.categories[i]);
-        $("select[name='filter']").append(newOption);
+        $("select[name='filterCategory']").append(newOption);
     }
 
-    $("select[name='filter']").change(function() {
+    $("select[name='filterCategory']").change(function() {
         var val = $(this).val();
         $.each(feed.categories, function(idx, category) {
             if (category != val && val != "none") {
@@ -313,6 +321,10 @@ $(document).ready(function() {
                 $(".category" + category).show();
             }
         });
+    });
+
+    $('#showSearchButton').click(function(){
+        $('#searchFilterWell').toggle();
     });
 
     $(".commentTextInput").keypress(function(e){
