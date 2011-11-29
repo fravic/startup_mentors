@@ -341,7 +341,9 @@ $(document).ready(function() {
         if ($(this).hasClass("danger")){
             clearSearch();
         }else{
-            $('#searchFilterWell').toggle();
+            $('#searchFilterWell').show();
+            $('#actions').hide();
+            $('#feed-wrapper').css('margin-top', $('#searchFilterWell').outerHeight() + 30);
         }
     });
     
@@ -368,18 +370,22 @@ $(document).ready(function() {
                   var text = $(this).find(".feed-item-name").text() + $(this).find(".feed-item-contents").text() + $(this).find(".feed-comment").text();
                   match = regex.exec(text);
                 }
-                if((t == "none" || $(this).hasClass("type" + t)) && (c == "none" || $(this).hasClass("category" + c)) && (match && match.length > 0)) {
+                if((t == "none" || $(this).hasClass("type" + t)) && (c == "none" || $(this).hasClass("category" + c)) && (!match || match.length > 0)) {
                     $(this).show();
                 }
             });
         }
         
-        $('#searchFilterWell').toggle();
+        $('#searchFilterWell').hide();
+        $('#actions').show();
+        $('#feed-wrapper').css('margin-top', $('#actions').outerHeight() + 30);
     });
     
     $('#searchCancel').click(function(){
         clearSearch();
-        $('#searchFilterWell').toggle();
+        $('#searchFilterWell').hide();
+        $('#actions').show();
+        $('#feed-wrapper').css('margin-top', $('#actions').outerHeight() + 30);
     });
 
     $(".commentTextInput").keypress(function(e){
