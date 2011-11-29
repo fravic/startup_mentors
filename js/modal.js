@@ -118,7 +118,7 @@ $(function(){
             var request = {
               Type: "Request",
               Category: $('#meetingCategory').val(),
-              DateTime: new Date(2011, 11, 17, 9, 26, 00, 00),
+              DateTime: new Date(),
 
               Person: "John Smith",
               When : _(dates).map(function(d){return new Date(d);}).sort(function(d1, d2) {return (d1 > d2) ? 1 : -1}),
