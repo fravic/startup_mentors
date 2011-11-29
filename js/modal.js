@@ -55,6 +55,7 @@ $(function(){
                 myDate.setHours(-24 * (day - 1));   // Set the hours to day number minus 1
             var i=0;
                 showTimePicker(myDate);
+            $("#newRequestButton").removeClass("disabled");
             }
 	});
 	
@@ -63,6 +64,7 @@ $(function(){
 	    $("#time-picker").hide();
 	    $(".selections").html("");
 	    $(".timepicker td").removeClass("blackify");
+	    $("#newRequestButton").addClass("disabled");
 	    dates = [];
 	})
 	
@@ -83,6 +85,19 @@ $(function(){
       keyboard: true
     });
     
+    // when Request Modal Dialog closes...
+    // reset the content
+    $("#newRequestModal").bind('hidden', function () {
+	    $("#datepicker").show();
+	    $("#time-picker").hide();
+	    $(".selections").html("");
+	    $(".timepicker td").removeClass("blackify");
+	    $('#datepicker').datepicker('setDate', null);
+	    $("#newRequestButton").addClass('disabled');
+	    dates = [];
+	    
+    })
+    
     $('#newEntryButton').click(function () {
         var entry = {
           Type: "Entry",
@@ -98,19 +113,21 @@ $(function(){
     });
 
     $('#newRequestButton').click(function () {
-        var request = {
-          Type: "Request",
-          Category: "Funding",
-          DateTime: new Date(2011, 11, 17, 9, 26, 00, 00),
+        if (!$(this).hasClass('disabled')){
+            var request = {
+              Type: "Request",
+              Category: $('#meetingCategory').val(),
+              DateTime: new Date(2011, 11, 17, 9, 26, 00, 00),
 
-          Person: "John Smith",
-          When : _(dates).map(function(d){return new Date(d);}).sort(function(d1, d2) {return (d1 > d2) ? 1 : -1}),
-        };
+              Person: "John Smith",
+              When : _(dates).map(function(d){return new Date(d);}).sort(function(d1, d2) {return (d1 > d2) ? 1 : -1}),
+            };
 
 
-        feed.addEntryToStart(request);
-        $("#textarea").val("");
-        $('#newRequestModal').modal('hide');
+            feed.addEntryToStart(request);
+            $("#textarea").val("");
+            $('#newRequestModal').modal('hide');
+        }
     });
 
         
@@ -119,5 +136,6 @@ $(function(){
         options += '<option value="' +  feed.categories[i] + '">' +  feed.categories[i] + '</option>';
     }
     $('#entryCategory').html(options);
+    $('#meetingCategory').html(options);
        
 });
