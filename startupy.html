@@ -120,12 +120,20 @@
           <a href="#" data-controls-modal="newEntryModal" data-backdrop="static" class="btn large">New Entry</a>
           <a href="#" data-controls-modal="newRequestModal" data-backdrop="static" class="btn large">New Request</a>
           <div style="float:right">
-          Filter by Category:
-          <select name="filter">
-            <option name="none" value="none">No Filter</option>
-          </select>
+              <a href="#" class="btn large">Search & Filter</a>
           </div>
         </div> <!-- .well -->
+        <div id="searchFilterWell" class="well">            
+            <label for="search">Search:</label>
+              <input class="xlarge" id="search" name="search" size="30" type="text">
+            <label for="filterType">Filter by Type:</label>
+            <select name="filterType">
+                <option name="none" value="none">No Filter</option>
+              </select>
+            <label for="filterCategory">Filter by Category:</label>
+            <select name="filterCategory">
+              <option name="none" value="none">No Filter</option>
+            </select>
         </div>
       </div>
 
