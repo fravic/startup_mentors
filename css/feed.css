@@ -4,6 +4,10 @@
 	margin: 0px;
 }
 
+.feed-item {
+    position: relative;
+}
+
 .feed-item-name {
   display: inline-block;
   width: 75%;
@@ -18,8 +22,8 @@
 .feed-item-contents {
   display: block;
   padding : 10px;
+    position: relative;
   margin-top : 5px;
-  background-color : white;
 }
 
 .feed-comment {
@@ -32,7 +36,6 @@
 
 .commentBtn {
     margin-top: 8px;
-    text-align: right;
 }
 
 #commentsTpl {
@@ -46,4 +49,13 @@
 
 .comment {
     padding: 10px;
+}
+
+.smallLink {
+    font-size: 10px;
+    padding-left: 5px;
+}
+
+.xout {
+    padding-left: 10px;
 }

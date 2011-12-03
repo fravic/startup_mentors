@@ -106,6 +106,7 @@ var feed = {
       $(li).addClass("category" + this.entries[i].Category);
     
     date.innerHTML = this.entries[i].DateTime.dateFormat("H:i m/d/Y");
+    $(date).append("<span class='xout'><a>x</a></span>");
     
     if (this.entries[i].Type == "Milestone") {
       name.innerHTML = "<b>" + this.entries[i].Person + "</b> changed <b>" + this.entries[i].Category + "</b> from <b>" + this.entries[i].From + "</b> to <b>" + this.entries[i].To + "</b>.";
@@ -119,6 +120,7 @@ var feed = {
       li.appendChild(contents);
       
       contents.innerHTML = this.entries[i].Notes;
+      $(contents).append("<span class='smallLink'><a style='margin-right:25px'>[edit]</a></span>");
     }
     else if (this.entries[i].Type == "Entry") {
       name.innerHTML = "<b>" + this.entries[i].Person + "</b> added notes for <b>" + this.entries[i].Category + "</b>:";
@@ -129,6 +131,7 @@ var feed = {
       li.appendChild(contents);
       
       contents.innerHTML = this.entries[i].Notes;
+      $(contents).append("<span class='smallLink'><a style='margin-right:25px'>[edit]</a></span>");
     }
 
       var comments = $("#commentsTpl").clone();
