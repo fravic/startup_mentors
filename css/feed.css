@@ -1,3 +1,6 @@
+#actions {
+    z-index: 10;
+}
 
 #feed-list {
 	list-style-type: none;
@@ -20,7 +23,9 @@
 .feed-item-contents {
   display: block;
   padding : 10px;
+    position: relative;
   margin-top : 5px;
+    z-index: 0;
 }
 
 .feed-comment {
@@ -83,4 +88,12 @@
 
 .typeRequest .icon{
     background-position: 0px -101px;
+}
+.envelope {
+    padding-left: 10px;
+    padding-top: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
 }
