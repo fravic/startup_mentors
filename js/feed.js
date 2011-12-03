@@ -81,6 +81,7 @@ var feed = {
       DateTime: new Date(2011, 10, 17, 9, 26, 00, 00),
       
       Person: "John Smith",
+      With: "Taylor Anderson",
       When : [
         new Date(2011, 10, 24, 09, 30, 00, 00),
         new Date(2011, 10, 24, 10, 00, 00, 00),
@@ -223,7 +224,7 @@ var feed = {
       name.innerHTML = persons + " met for <b>" + this.entries[i].Time + " hour" + (this.entries[i].Time == 1 ? "" : "s") + "</b> about <b>" + this.entries[i].Category + "</b>.";
     }
     else if (this.entries[i].Type == "Request") {
-      name.innerHTML = "<b>" + this.entries[i].Person + "</b> wants to meet about <b>" + this.entries[i].Category + "</b> at one of:";
+      name.innerHTML = "<b>" + this.entries[i].Person + "</b> wants to meet with <b>" + this.entries[i].With + "</b> about <b>" + this.entries[i].Category + "</b> at one of:";
       
       var contents = document.createElement("div");
       contents.setAttribute('class', 'feed-item-contents');

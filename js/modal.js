@@ -126,6 +126,7 @@ $(function(){
               DateTime: new Date(),
 
               Person: "John Smith",
+              With: "Taylor Anderson",
               When : _(dates).map(function(d){return new Date(d);}).sort(function(d1, d2) {return (d1 > d2) ? 1 : -1}),
             };
 
