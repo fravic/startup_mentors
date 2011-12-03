@@ -4,7 +4,7 @@ function showTimePicker(date) {
     $(".timepicker th").not(":first").each(function(index) {
         var d = new Date(date);
         d.setDate(date.getDate() + index)
-        $(this).text(d.dateFormat("m/d"));
+        $(this).text(d.dateFormat("D m/d"));
     });
 
     $(".timepicker td").not(".info").each(function(index) {

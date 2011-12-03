@@ -21,6 +21,10 @@
     border: 1px solid #eee !important;
 }
 
+#time-picker th.info {
+    text-align: center;
+}
+
 .timepicker {  
   border-collapse : collapse;
   float:left !important;
