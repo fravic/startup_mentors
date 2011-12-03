@@ -90,6 +90,11 @@ $(function(){
       keyboard: true
     });
     
+    $('#requestConfirm').modal({
+      backdrop: true,
+      keyboard: true
+    });
+    
     // when Request Modal Dialog closes...
     // reset the content
     $("#newRequestModal").bind('hidden', function () {
@@ -134,8 +139,14 @@ $(function(){
             feed.addEntryToStart(request);
             $("#textarea").val("");
             $('#newRequestModal').modal('hide');
+            $('#requestConfirm .modal-body').html("<p>Request sent to <b>" + request.With + "</b><p>");
+            $('#requestConfirm').modal('show');
         }
         return false;
+    });
+    
+    $('#closeConfirmButton').click(function () {
+        $('#requestConfirm').modal('hide');
     });
 
         

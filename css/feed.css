@@ -89,11 +89,3 @@
 .typeRequest .icon{
     background-position: 0px -101px;
 }
-.envelope {
-    padding-left: 10px;
-    padding-top: 10px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 30px;
-}

@@ -238,7 +238,6 @@ var feed = {
         list.appendChild(datetime);
       }
       contents.appendChild(list);
-        $(contents).append("<img src='img/envelope.png' class='envelope' />");
     }
 
       var comments = $("#commentsTpl").clone();
