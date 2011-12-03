@@ -33,6 +33,12 @@ $(function(){
            dates.push($(this).attr("date"));
        }
 
+       if(dates.length > 0) {
+           $("#newRequestButton").removeClass("disabled");
+       } else {
+           $("#newRequestButton").addClass("disabled");
+       }
+
        var list = document.createElement("ul");
        for (j = 0; j < dates.length; j++) {
          var datetime = document.createElement("li");
@@ -55,7 +61,6 @@ $(function(){
                 myDate.setHours(-24 * (day - 1));   // Set the hours to day number minus 1
             var i=0;
                 showTimePicker(myDate);
-            $("#newRequestButton").removeClass("disabled");
             }
     });
     
