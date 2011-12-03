@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Startup Mentors</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css">
+
+    <!-- our CSS -->
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/feed.css">
+    <link rel="stylesheet" href="css/modal.css">
+    
+    <!-- frameworks -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-modal.js"></script>
+    <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-twipsy.js"></script>
+    <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-popover.js"></script>
+    <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+
+    <!-- our JavaScript -->
+    <script type="text/javascript" src="js/profile.js"></script>
+    <script type="text/javascript" src="js/feed.js"></script>
+    <script type="text/javascript" src="js/date-functions.js"></script>
+    <script type="text/javascript" src="js/modal.js"></script>
+    <script>
+        
+    </script>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Startup Mentors</a>
+          <!-- <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul> -->
+          <p class="pull-right">Logged in as <a href="#">John Smith</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    <div id="timetest">
+        
+    </div>
+    <div class="row">
+      <div class="span5">
+        <div class="sidebar profilePage">
+          <div class="well">
+            <div class="profileCenter">
+              <img src="img/startupy.png" />
+              <h4>Startup Y</h4>
+              <a href="javascript:Profile.editProfile();">[Edit]</a>
+            </div>
+
+            <h5>Founders</h5>
+            <ul id="profileFieldFounders">
+              <li><a href="#">John Smith</a></li>
+              <li><a href="#">Simon Oliver</a></li>
+            </ul>
+            <div class="profileHidden">
+              <input id="profileHiddenFounder" type="text" placeholder="Type a name to add a Founder" />
+              <div class="profileEditButtonsSmall">
+                <a href="javascript:Profile.addFounder();" data-backdrop="static" class="btn small">Add</a>
+              </div>
+            </div>
+            <h5>Contact</h5>
+            <div id="profileFieldContact" class="profileField">
+              contactus@startupy.com
+            </div>
+            <div class="profileHidden">
+              <input id="profileHiddenContact" type="text" value="contactus@startupy.com" />
+            </div>
+            <h5>Employees</h5>
+            <div id="profileFieldEmployees" class="profileField">
+              2
+            </div>
+            <div class="profileHidden">
+              <input id="profileHiddenEmployees" type="text" value="2" />
+            </div>
+            <h5>Revenue</h5>
+            <div id="profileFieldRevenue" class="profileField">
+              $100,000/year
+            </div>
+            <div class="profileHidden">
+              <input id="profileHiddenRevenue" type="text" value="$100,000/year" />
+            </div>
+            <h5>Funding</h5>
+            <div id="profileFieldFunding" class="profileField">
+              $1,500,000
+            </div>
+            <div class="profileHidden">
+              <input id="profileHiddenFunding" type="text" value="$1,500,000" />
+            </div>
+            <div class="profileHidden profileEditButtons">
+              <a href="javascript:Profile.finishEditing(false);" data-backdrop="static" class="btn medium">Cancel</a>
+              <a href="javascript:Profile.finishEditing(true);" data-backdrop="static" class="btn medium">Save</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="offset5" style="position: fixed; margin-top: -20px; background: white;">
+        <div class="span11" style="margin-top: 20px;">
+        <div id="actions" class="well" style="margin-bottom: 5px;">
+          <a href="#" data-controls-modal="newEntryModal" data-backdrop="static" class="btn ">New Entry</a>
+          <a href="#" data-controls-modal="newRequestModal" data-backdrop="static" class="btn ">New Meeting Request</a>
+          <div style="float:right">
+              <a href="#" id="showSearchButton" class="btn ">Search</a>
+          </div>
+        </div> <!-- .well -->
+    
+          <div id="searchFilterWell" class="well" style="display:none">            
+              <div class="clearfix" style="margin-bottom: 1em;">
+                  <label for="searchText">Search:</label>
+                    <input class="xlarge" id="searchText" name="searchText" size="30" type="text">
+              </div>
+              <div class="clearfix" style="margin-bottom: 1em;">
+                  <label for="filterType">by Type:</label>
+                  <select name="filterType">
+                      <option name="none" value="none">Any Type</option>
+                    </select>
+              </div>
+              <div class="clearfix" style="margin-bottom: 1em;">  
+                  <label for="filterCategory">by Category:</label>
+                  <select name="filterCategory">
+                    <option name="none" value="none">Any Category</option>
+                  </select>
+              </div>
+              <div class="actions">
+                  <input id="searchButton" type="submit" class="btn primary" value="Search">
+                  <button id="searchCancel" type="reset" class="btn">Cancel</button>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div id="feed-wrapper" class="span11" style="margin-top: 85px">
+          <h1>Stream</h1>
+          <div id="feed">
+        
+          </div>
+          <div class="well" id="feed-show-more">
+            <a href="javascript:feed.showMoreEntries(5);">Load More...</a>
+          </div>
+      </div><!-- span 11-->
+    </div><!-- row -->
+    </div><!-- container -->
+    
+    <!-- Modals -->
+    <div id="newEntryModal" class="modal hide fade in" style="display: none; ">
+        <div class="modal-header">
+          <a href="#" class="close">×</a>
+          <h3>New Entry</h3>
+        </div>
+        <div class="modal-body">
+              <label for="entryCategory">Entry Category:</label> 
+              <div class="input">
+                  <select class="medium" name="entryCategory" id="entryCategory">
+              </div>
+              
+              <label for="textarea">Entry:</label> 
+              <div class="input">
+                  <textarea class="xlarge" id="textarea" name="textarea" rows="3"></textarea>
+              </div>
+              
+              <label for="fileInput">Attach a file:</label> 
+              <div class="input">
+              <input class="input-file" id="fileInput" name="fileInput" type="file">
+              </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" id="newEntryButton" class="btn primary">Submit</a>
+        </div>
+    </div>
+    
+    <div id="newRequestModal" class="modal hide fade in" style="display: none; ">
+        <div class="modal-header">
+          <a href="#" class="close">×</a>
+          <h3>New Request</h3>
+        </div>
+        <div class="modal-body clearfix">
+            
+          <!-- date picker that will pick week -->
+          <div id="datepicker">
+            <h4>Select a week:</h4>
+          </div>
+          <div id="time-picker">
+                <a href="#" id="backToDate" class="btn">« Back to selecting a week</a>
+                <h4>Select timeslots</h4>
+                <table class="timepicker">
+                    <tr>
+                      <th class="info"></th>
+                      <th class="info"></th>
+                      <th class="info"></th>  
+                      <th class="info"></th>  
+                      <th class="info"></th>  
+                      <th class="info"></th>  
+                      <th class="info"></th>
+                      <th class="info"></th>      
+                    </tr>
+                    <tr>
+                      <td class="info" rowspan="2">9am</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="info" rowspan="2">10am</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="info" rowspan="2">11am</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="info" rowspan="2">12pm</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="info" rowspan="2">1pm</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="info" rowspan="2">2pm</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="info" rowspan="2">3pm</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="info" rowspan="2">4pm</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="info" rowspan="2">5pm</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+              </table>
+              <div class="selections">
+              </div>
+          </div>
+          <div class="clearfix" style="clear:both;"></div>
+        </div>
+        <div class="modal-footer">
+            <label for="entryCategory">Meeting Category:</label> 
+            <select class="medium" name="meetingCategory" id="meetingCategory"></select>
+          <a href="#" id="newRequestButton" class="btn primary disabled">Request Meeting</a>
+        </div>
+    </div>
+    
+    <!-- Comment stuff -->
+    <div id="commentsTpl" class="comments">
+    </div>
+    <div id="commentBtnTpl" class="commentBtn">
+      <input type="text" class="commentTextInput"></input>
+      <a href="javascript:feed.addComment();" data-backdrop="static" class="btn small">Comment</a>
+    </div>
+  </body>
+</html>

@@ -19,11 +19,20 @@ var feed = {
     "Revenue",
     "Other"
   ],
+  
+  types : [
+    "Milestone",
+    "Journal",
+    "Entry",
+    "Meeting",
+    "Request"
+  ],
+  
   entries : [
     {
       Type: "Milestone",
       Category: "Funding",
-      DateTime: new Date(2011, 11, 20, 12, 39, 00, 00),
+      DateTime: new Date(2011, 10, 20, 12, 39, 00, 00),
       
       Person: "John Smith",
       From : "$1,000,000",
@@ -33,23 +42,75 @@ var feed = {
     {
       Type: "Journal",
       Category: "Funding",
-      DateTime: new Date(2011, 11, 20, 11, 12, 00, 00),
+      DateTime: new Date(2011, 10, 20, 11, 12, 00, 00),
       
       Person: "John Smith",
-      When : new Date(2011, 11, 20, 10, 24, 00, 00),
+      When : new Date(2011, 10, 20, 10, 24, 00, 00),
       Notes : "Talked about meeting with SV VCs.",
       Comments : [
-        "Oh yeah, also discussed possible government funding."
+        {
+          Name: "John Smith",
+          Comment: "Oh yeah, also discussed possible government funding."
+        }
       ]        
     },
     {
       Type: "Entry",
       Category: "Funding",
-      DateTime: new Date(2011, 11, 19, 15, 44, 00, 00),
+      DateTime: new Date(2011, 10, 19, 15, 44, 00, 00),
       
       Person: "John Smith",
       Notes : "We need to start looking for more funding.",
       Comments : []
+    },
+    {
+      Type: "Meeting",
+      Category: "Funding",
+      DateTime: new Date(2011, 10, 17, 9, 30, 00, 00),
+      
+      Persons: [
+        "John Smith",
+        "Taylor Anderson"
+      ],
+      Time : 1.5,
+      Comments : []
+    },
+    {
+      Type: "Request",
+      Category: "Funding",
+      DateTime: new Date(2011, 10, 17, 9, 26, 00, 00),
+      
+      Person: "John Smith",
+      When : [
+        new Date(2011, 10, 24, 09, 30, 00, 00),
+        new Date(2011, 10, 24, 10, 00, 00, 00),
+        new Date(2011, 10, 24, 10, 30, 00, 00),
+        new Date(2011, 10, 25, 09, 30, 00, 00),
+        new Date(2011, 10, 25, 10, 30, 00, 00),
+      ],
+      Comments : [
+        {
+          Name: "Taylor Anderson",
+          Comment: "I am actually leaving town on the 21st, would you be available on the 20th?"
+        }
+      ]
+    },
+    {
+      Type: "Meeting",
+      Category: "Other",
+      DateTime: new Date(2011, 10, 10, 12, 30, 00, 00),
+      
+      Persons: [
+        "John Smith",
+        "Taylor Anderson"
+      ],
+      Time : 1,
+      Comments : [
+        {
+          Name: "Taylor Anderson",
+          Comment: "On-boarding meeting."
+        }
+      ]
     }
   ],
   
@@ -69,6 +130,8 @@ var feed = {
     entry.Comments = [];
     
     this.entries.unshift(entry);
+    this.end += 1;
+    
     $("#feed-list").prepend(this.generateEntry(0));
   },
   
@@ -77,7 +140,11 @@ var feed = {
     entry.Comments = [];
     
     this.entries.push(entry);
-    $("#feed-list").append(this.generateEntry(feed.entries.length - 1));
+    this.end += 1;
+    
+    if (this.end == feed.entries.length - 1) {
+      $("#feed-list").append(this.generateEntry(feed.entries.length - 1));
+    }
   },
   
   showMoreEntries : function(n) {
@@ -95,14 +162,19 @@ var feed = {
     var li = document.createElement("li");
     li.setAttribute('class', 'feed-item well');
     
+    var icon = document.createElement("div");
+    icon.setAttribute('class', 'icon');
+    
     var name = document.createElement("div");
     name.setAttribute('class', 'feed-item-name');
     
     var date = document.createElement("div");
     date.setAttribute('class', 'feed-item-date');
-    
+
+    li.appendChild(icon);
     li.appendChild(name);
     li.appendChild(date);
+      $(li).addClass("type" + this.entries[i].Type);
       $(li).addClass("category" + this.entries[i].Category);
     
     date.innerHTML = this.entries[i].DateTime.dateFormat("H:i m/d/Y");
@@ -133,6 +205,39 @@ var feed = {
       contents.innerHTML = this.entries[i].Notes;
       $(contents).append("<span class='smallLink'><a style='margin-right:25px'>[edit]</a></span>");
     }
+    else if (this.entries[i].Type == "Meeting") {
+      var persons = "";
+      
+      for (j = 0; j < this.entries[i].Persons.length; j++) {
+        if (j == 0) {
+          persons = "<b>" + this.entries[i].Persons[j] + "</b>";
+        }
+        else if (j == this.entries[i].Persons.length - 1) {
+          persons = persons + " and " + "<b>" + this.entries[i].Persons[j] + "</b>";
+        }
+        else {
+          persons = persons + ", " + "<b>" + this.entries[i].Persons[j] + "</b>";
+        }
+      }
+      
+      name.innerHTML = persons + " met for <b>" + this.entries[i].Time + " hour" + (this.entries[i].Time == 1 ? "" : "s") + "</b> about <b>" + this.entries[i].Category + "</b>.";
+    }
+    else if (this.entries[i].Type == "Request") {
+      name.innerHTML = "<b>" + this.entries[i].Person + "</b> wants to meet about <b>" + this.entries[i].Category + "</b> at one of:";
+      
+      var contents = document.createElement("div");
+      contents.setAttribute('class', 'feed-item-contents');
+      
+      li.appendChild(contents);
+      
+      var list = document.createElement("ul");
+      for (j = 0; j < this.entries[i].When.length; j++) {
+        var datetime = document.createElement("li");
+        datetime.innerHTML = "<b>" + this.entries[i].When[j].dateFormat("m/d/Y H:i") + "</b>";
+        list.appendChild(datetime);
+      }
+      contents.appendChild(list);
+    }
 
       var comments = $("#commentsTpl").clone();
       comments.attr("id", "comments" + this.entries[i].Guid);
@@ -147,14 +252,14 @@ var feed = {
     for (j = 0; j < this.entries[i].Comments.length; j++) {
       var commentTxt, newComment, speakerDiv;
       
-      commentTxt = this.entries[i].Comments[j];
+      comment = this.entries[i].Comments[j];
       
       newComment = $("<div class=\"feed-comment\">");
       speakerDiv = $("<div>");
-      speakerDiv.html("<b>John Smith</b> commented:");
+      speakerDiv.html("<b>" + comment.Name + "</b> commented:");
       newComment.addClass("comment");
       newComment.append(speakerDiv);
-      newComment.append(commentTxt);
+      newComment.append(comment.Comment);
       
       comments.append(newComment);
     }
@@ -169,7 +274,10 @@ var feed = {
         commentTxt = $("input", btn).val();
         
         var entry = this.entryForGuid(Guid);
-        entry.Comments.push(commentTxt);
+        entry.Comments.push({
+          Name: "John Smith",
+          Comment: commentTxt
+        });
 
         newComment = $("<div class=\"feed-comment\">");
         speakerDiv = $("<div>");
@@ -186,33 +294,102 @@ var feed = {
 };
 
 $(document).ready(function() {
-  $('#feed').append("<ul id='feed-list'></ul>");
-  for (i = 0; i < feed.entries.length; i++) {
-    feed.entries[i].Guid = generate_Guid();
-    if (i < 5) {
-      $("#feed-list").append(feed.generateEntry(i));
-      this.end++;
+    $('#feed').append("<ul id='feed-list'></ul>");
+
+    for (i = 0; i < feed.entries.length; i++) {
+        feed.entries[i].Guid = generate_Guid();
+        if (i < 5) {
+          $("#feed-list").append(feed.generateEntry(i));
+          feed.end += 1;
+        }
     }
-  }
-  if (feed.entries.length < 6) {
-    $('#feed-show-more').hide();
-  }
+    if (feed.entries.length < 6) {
+        $('#feed-show-more').hide();
+    }
+
+    for (i = 0; i < feed.types.length; i++) {
+        var newOption = $("<option>");
+        newOption.attr("value", feed.types[i]);
+        newOption.html(feed.types[i]);
+        $("select[name='filterType']").append(newOption);
+    }
+
     for (i = 0; i < feed.categories.length; i++) {
         var newOption = $("<option>");
         newOption.attr("value", feed.categories[i]);
         newOption.html(feed.categories[i]);
-        $("select[name='filter']").append(newOption);
+        $("select[name='filterCategory']").append(newOption);
     }
 
-    $("select[name='filter']").change(function() {
-        var val = $(this).val();
-        $.each(feed.categories, function(idx, category) {
-            if (category != val && val != "none") {
-                $(".category" + category).hide();
-            } else {
-                $(".category" + category).show();
-            }
-        });
+    // $("select[name='filterCategory']").change(function() {
+    //     var val = $(this).val();
+    //     $.each(feed.categories, function(idx, category) {
+    //         if (category != val && val != "none") {
+    //             $(".category" + category).hide();
+    //         } else {
+    //             $(".category" + category).show();
+    //         }
+    //     });
+    // });
+
+    function clearSearch(){
+        var q = $("#searchText").val("");
+        var t = $("select[name='filterType']").val("none");
+        var c = $("select[name='filterCategory']").val("none");
+        $(".feed-item").show();
+        $('#showSearchButton').html("Search").removeClass('danger');
+    }
+
+    $('#showSearchButton').click(function(){
+        if ($(this).hasClass("danger")){
+            clearSearch();
+        }else{
+            $('#searchFilterWell').show();
+            $('#actions').hide();
+            $('#feed-wrapper').css('margin-top', $('#searchFilterWell').outerHeight() + 30);
+        }
+        return false;
+    });
+    
+    $('#searchButton').click(function(){
+        var q = $("#searchText").val();
+        var t = $("select[name='filterType']").val();
+        var c = $("select[name='filterCategory']").val();
+        
+        if (q == "" && t == "none" && c == "none"){
+            $(".feed-item").show();
+            $('#showSearchButton').html("Search").removeClass('danger');
+        }else{
+    
+            $('#showSearchButton').html("Clear Search").addClass('danger');
+
+            // TODO
+            // insert hide things that doesn't contain the the search query here            
+            
+            $(".feed-item").hide();
+            var regex = new RegExp(q, "i");
+            $(".feed-item").each(function() {
+                var match = null;
+                if(q != "") {
+                  var text = $(this).find(".feed-item-name").text() + $(this).find(".feed-item-contents").text() + $(this).find(".feed-comment").text();
+                  match = regex.exec(text);
+                }
+                if((t == "none" || $(this).hasClass("type" + t)) && (c == "none" || $(this).hasClass("category" + c)) && (q == "" || (match && match.length > 0))) {
+                    $(this).show();
+                }
+            });
+        }
+        
+        $('#searchFilterWell').hide();
+        $('#actions').show();
+        $('#feed-wrapper').css('margin-top', $('#actions').outerHeight() + 30);
+    });
+    
+    $('#searchCancel').click(function(){
+        clearSearch();
+        $('#searchFilterWell').hide();
+        $('#actions').show();
+        $('#feed-wrapper').css('margin-top', $('#actions').outerHeight() + 30);
     });
 
     $(".commentTextInput").keypress(function(e){
