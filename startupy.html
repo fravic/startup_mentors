@@ -97,18 +97,25 @@
               $100,000/year
             </div>
             <div class="profileHidden">
-              <input id="profileHiddenRevenue" type="text" value="$100,000/year" />
+              $ <input id="profileHiddenRevenue" type="text" value="100,000" style="width: 100px;" /> / year
             </div>
             <h5>Funding</h5>
             <div id="profileFieldFunding" class="profileField">
               $1,500,000
             </div>
             <div class="profileHidden">
-              <input id="profileHiddenFunding" type="text" value="$1,500,000" />
+              $ <input id="profileHiddenFunding" type="text" value="1,500,000" style="width: 100px;"/>
+            </div>
+            <h5>Pitch</h5>
+            <div id="profileFieldPitch" class="profileField">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a accumsan neque. Nunc hendrerit, massa nec commodo posuere, nisi risus eleifend augue, vitae consectetur ipsum metus sed libero. Donec id lectus a elit bibendum suscipit. Nullam et sem nunc, non lobortis quam. Praesent quam enim, pharetra a fringilla sit amet, tincidunt nec enim. Nulla quis sagittis metus. Proin imperdiet massa non sapien euismod ac adipiscing nunc mattis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            </div>
+            <div class="profileHidden">
+              <textarea id="profileHiddenPitch" rows="15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a accumsan neque. Nunc hendrerit, massa nec commodo posuere, nisi risus eleifend augue, vitae consectetur ipsum metus sed libero. Donec id lectus a elit bibendum suscipit. Nullam et sem nunc, non lobortis quam. Praesent quam enim, pharetra a fringilla sit amet, tincidunt nec enim. Nulla quis sagittis metus. Proin imperdiet massa non sapien euismod ac adipiscing nunc mattis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</textarea>
             </div>
             <div class="profileHidden profileEditButtons">
+              <a href="javascript:Profile.finishEditing(true);" data-backdrop="static" class="btn medium primary">Save</a>
               <a href="javascript:Profile.finishEditing(false);" data-backdrop="static" class="btn medium">Cancel</a>
-              <a href="javascript:Profile.finishEditing(true);" data-backdrop="static" class="btn medium">Save</a>
             </div>
           </div>
         </div>
@@ -117,8 +124,8 @@
       <div class="offset5" style="position: fixed; margin-top: -20px; background: white; z-index: 10;">
         <div class="span11" style="margin-top: 20px;">
         <div id="actions" class="well" style="margin-bottom: 5px;">
-          <a href="#" data-controls-modal="newEntryModal" data-backdrop="static" class="btn ">New Entry</a>
-          <a href="#" data-controls-modal="newRequestModal" data-backdrop="static" class="btn ">New Meeting Request</a>
+          <a href="#" data-controls-modal="newEntryModal" data-backdrop="static" class="btn">New Entry</a>
+          <a href="#" data-controls-modal="newRequestModal" data-backdrop="static" class="btn">New Meeting Request</a>
           <div style="float:right">
               <a href="#" id="showSearchButton" class="btn ">Search</a>
           </div>
